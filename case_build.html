@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Case Study Prompt Builder</title>
+    
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom styling for minor tweaks -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind slate-50 */
+            color: #0f172a; /* Tailwind slate-900 */
+        }
+        
+        /* Custom scrollbar for output */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background: #475569; /* slate-600 */
+            border-radius: 4px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: #64748b; /* slate-500 */
+        }
+
+        /* Smooth section transitions */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Hide scrollbar for tabs but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Tab fade animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-12 selection:bg-indigo-100 selection:text-indigo-900">
+
+    <header class="glass-panel border-b border-slate-200 sticky top-0 z-20 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-3">
+            <div class="bg-indigo-600 p-2 rounded-lg text-white shadow-md shadow-indigo-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            </div>
+            <div>
+                <h1 class="text-xl font-bold text-slate-900 tracking-tight">Cybersecurity Case Study Prompt Builder</h1>
+                <p class="text-xs font-medium text-slate-500 mt-0.5">Create a one‑shot prompt that generates a workforce‑style HTML interactive.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        <div class="flex flex-col xl:flex-row gap-8">
+            
+            <!-- LEFT COLUMN: Form Card -->
+            <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/40 border border-slate-200 p-6 xl:p-8 flex-1 w-full xl:w-5/12 h-fit">
+                <div class="flex items-center justify-between mb-6 border-b border-slate-100 pb-4">
+                    <h2 class="text-lg font-semibold text-slate-800">Case Study Parameters</h2>
+                </div>
+                
+                <form id="promptForm" class="space-y-6" onsubmit="event.preventDefault();">
+                    
+                    <!-- Quick-Start Templates -->
+                    <div class="bg-indigo-50/60 p-4 rounded-xl border border-indigo-100">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-800 mb-3 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                            Quick-Start Templates
+                        </h3>
+                        <div class="flex flex-wrap gap-2.5">
+                            <button type="button" class="template-btn flex-1 min-w-[120px] text-xs font-semibold bg-white border border-indigo-200 text-indigo-700 px-3 py-2 rounded-lg hover:bg-indigo-50 hover:border-indigo-300 transition-colors shadow-sm text-center" data-template="ransomware">Healthcare Ransomware</button>
+                            <button type="button" class="template-btn flex-1 min-w-[120px] text-xs font-semibold bg-white border border-indigo-200 text-indigo-700 px-3 py-2 rounded-lg hover:bg-indigo-50 hover:border-indigo-300 transition-colors shadow-sm text-center" data-template="insider">Financial Insider</button>
+                            <button type="button" class="template-btn flex-1 min-w-[120px] text-xs font-semibold bg-white border border-indigo-200 text-indigo-700 px-3 py-2 rounded-lg hover:bg-indigo-50 hover:border-indigo-300 transition-colors shadow-sm text-center" data-template="supplychain">ICS Supply Chain</button>
+                        </div>
+                    </div>
+
+                    <!-- Target Platform -->
+                    <div>
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
+                            Target AI Platform
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <button type="button" data-llm="chatgpt" class="llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-indigo-600 bg-indigo-600 text-white font-semibold text-sm shadow-sm transition-all duration-200">ChatGPT</button>
+                            <button type="button" data-llm="claude" class="llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-white text-slate-600 font-semibold text-sm hover:border-indigo-300 hover:text-indigo-600 transition-all duration-200">Claude</button>
+                            <button type="button" data-llm="gemini" class="llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-white text-slate-600 font-semibold text-sm hover:border-indigo-300 hover:text-indigo-600 transition-all duration-200">Gemini</button>
+                        </div>
+                    </div>
+
+                    <!-- TABS NAVIGATION -->
+                    <div class="flex border-b border-slate-200 mt-6 overflow-x-auto hide-scrollbar">
+                        <button type="button" class="tab-btn active px-4 py-2.5 text-sm font-semibold border-b-2 border-indigo-600 text-indigo-600 whitespace-nowrap transition-colors" data-target="tab-org">1. Organization</button>
+                        <button type="button" class="tab-btn px-4 py-2.5 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 whitespace-nowrap transition-colors" data-target="tab-threat">2. The Threat</button>
+                        <button type="button" class="tab-btn px-4 py-2.5 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 whitespace-nowrap transition-colors" data-target="tab-evidence">3. Artifacts</button>
+                        <button type="button" class="tab-btn px-4 py-2.5 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 whitespace-nowrap transition-colors" data-target="tab-pedagogy">4. Pedagogy</button>
+                    </div>
+
+                    <div class="tab-content relative min-h-[400px] pt-4">
+                        
+                        <!-- TAB 1: Organization & Audience -->
+                        <div id="tab-org" class="tab-pane active space-y-5 animate-fadeIn">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="courseLevel" class="block text-sm font-semibold text-slate-700 mb-1.5">Course Level</label>
+                                    <select id="courseLevel" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="K-12 / Cyber Foundations">K-12 / Cyber Foundations</option>
+                                        <option value="Pre-Security (A+ / Network+ level)">Pre-Security (A+ / Network+ level)</option>
+                                        <option value="Introductory / Security+" selected>Introductory / Security+</option>
+                                        <option value="Intermediate (SOC / Blue Team)">Intermediate (SOC / Blue Team)</option>
+                                        <option value="Advanced (Architecture / Engineering)">Advanced (Architecture / Engineering)</option>
+                                        <option value="Specialized Academic (Cyber Law, GRC, AppSec)">Specialized Academic (Law, GRC, AppSec)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="learnerProfile" class="block text-sm font-semibold text-slate-700 mb-1.5">Learner Profile</label>
+                                    <select id="learnerProfile" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="High School / Gen Z Digital Natives">High School / Gen Z Digital Natives</option>
+                                        <option value="Career Switchers (Non-IT Backgrounds)">Career Switchers (Non-IT Backgrounds)</option>
+                                        <option value="Junior IT professionals transitioning to security" selected>Junior IT to Security</option>
+                                        <option value="Current security analysts expanding their skillset">Current Security Analysts</option>
+                                        <option value="Software Developers / Engineers">Software Developers / Engineers</option>
+                                        <option value="Non-Technical Corporate Staff (HR, Legal, PR)">Non-Technical Staff (HR, Legal, PR)</option>
+                                        <option value="Business leaders and executives">Business Leaders & Execs</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-slate-100 pt-5">
+                                <div>
+                                    <label for="industrySelect" class="block text-sm font-semibold text-slate-700 mb-1.5">Industry</label>
+                                    <select id="industrySelect" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Higher education">Higher education</option>
+                                        <option value="K‑12">K‑12</option>
+                                        <option value="Healthcare">Healthcare</option>
+                                        <option value="Financial services">Financial services</option>
+                                        <option value="Manufacturing">Manufacturing</option>
+                                        <option value="Local government">Local government</option>
+                                        <option value="Small business">Small business</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label id="industryOtherLabel" for="industryOther" class="block text-sm font-semibold text-slate-400 mb-1.5">If Other, specify</label>
+                                    <input type="text" id="industryOther" disabled class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-100/50 text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm transition-colors">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="orgSize" class="block text-sm font-semibold text-slate-700 mb-1.5">Organization Size</label>
+                                    <select id="orgSize" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Small (1-50 employees)">Small (1-50)</option>
+                                        <option value="Medium (51-250 employees)">Medium (51-250)</option>
+                                        <option value="Large (251-1000 employees)">Large (251-1000)</option>
+                                        <option value="Enterprise (1000+ employees)">Enterprise (1000+)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="orgFunctions" class="block text-sm font-semibold text-slate-700 mb-1.5">Key Business Function</label>
+                                    <select id="orgFunctions" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <!-- Populated via JS based on Industry -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="orgSystems" class="block text-sm font-semibold text-slate-700 mb-1.5">Critical Systems</label>
+                                    <select id="orgSystems" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Electronic Health Records (EHR)">EHR / Medical Records</option>
+                                        <option value="Cloud-native SaaS applications">Cloud/SaaS Apps</option>
+                                        <option value="Industrial Control Systems (ICS/SCADA)">ICS / SCADA</option>
+                                        <option value="On-prem Active Directory & File Shares">On-Prem AD / File Shares</option>
+                                        <option value="Customer Relationship Management (CRM)">CRM System</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="orgConstraints" class="block text-sm font-semibold text-slate-700 mb-1.5">Organizational Constraints</label>
+                                    <select id="orgConstraints" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Well-funded / Mature Security">Well-funded / Mature Security</option>
+                                        <option value="Understaffed / Burned out team">Understaffed / Burned out team</option>
+                                        <option value="Post-Merger (Mismatched systems)">Post-Merger (Mismatched systems)</option>
+                                        <option value="Legacy Tech Debt (Outdated OS)">Legacy Tech Debt (Outdated OS)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 2: The Threat -->
+                        <div id="tab-threat" class="tab-pane hidden space-y-5 animate-fadeIn">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="threatActor" class="block text-sm font-semibold text-slate-700 mb-1.5">Threat Actor / Motivation</label>
+                                    <select id="threatActor" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Cybercriminal Syndicate (Financial Gain)">Cybercriminal Syndicate</option>
+                                        <option value="Nation-State / APT (Espionage/Theft)">Nation-State / APT</option>
+                                        <option value="Malicious Insider (Revenge/Financial)">Malicious Insider</option>
+                                        <option value="Accidental Insider (Negligence)">Accidental Insider</option>
+                                        <option value="Hacktivist (Ideological)">Hacktivist</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="accessVector" class="block text-sm font-semibold text-slate-700 mb-1.5">Initial Access Vector</label>
+                                    <select id="accessVector" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Spear-phishing (Malicious link/attachment)">Spear-phishing</option>
+                                        <option value="Unpatched Edge Device (VPN/Firewall)">Unpatched Edge Device</option>
+                                        <option value="Stolen Credentials (Credential Stuffing)">Stolen Credentials</option>
+                                        <option value="Supply Chain Compromise (3rd party software)">Supply Chain</option>
+                                        <option value="Physical Access (USB Drop / Tailgating)">Physical Access</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-slate-100 pt-5">
+                                <div>
+                                    <label for="threatScenario" class="block text-sm font-semibold text-slate-700 mb-1.5">Scenario Outcome / Action</label>
+                                    <select id="threatScenario" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Lateral movement to deploy ransomware on critical servers">Deploy ransomware on critical servers</option>
+                                        <option value="Silent exfiltration of sensitive database records">Silent exfiltration of database records</option>
+                                        <option value="Sabotage and deletion of primary and backup systems">Sabotage and deletion of systems</option>
+                                        <option value="Cryptomining deployment causing massive resource spikes">Cryptomining deployment (resource spikes)</option>
+                                        <option value="Business Email Compromise leading to fraudulent wire transfer">BEC leading to fraudulent wire transfer</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="frameworkAlignment" class="block text-sm font-semibold text-slate-700 mb-1.5">Framework Alignment</label>
+                                    <select id="frameworkAlignment" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="MITRE ATT&CK (Enterprise)">MITRE ATT&CK (Enterprise)</option>
+                                        <option value="MITRE ATT&CK (ICS)">MITRE ATT&CK (ICS)</option>
+                                        <option value="OWASP Top 10 (Web/API)">OWASP Top 10 (Web/API)</option>
+                                        <option value="NIST Cybersecurity Framework (CSF)">NIST CSF</option>
+                                        <option value="None / General Concept">None / General Concept</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-slate-100 pt-5">
+                                <div>
+                                    <label for="underlyingWeakness" class="block text-sm font-semibold text-slate-700 mb-1.5">Underlying Weakness</label>
+                                    <select id="underlyingWeakness" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Missing or bypassed Multi-Factor Authentication (MFA)">Missing/Bypassed MFA</option>
+                                        <option value="Unpatched CVE / Zero-Day Vulnerability">Unpatched CVE/Zero-Day</option>
+                                        <option value="Misconfigured Cloud Storage / IAM">Misconfigured Cloud/IAM</option>
+                                        <option value="Human Negligence / Shadow IT">Human Negligence / Shadow IT</option>
+                                        <option value="Weak/Reused Password Policy">Weak Password Policy</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="dwellTime" class="block text-sm font-semibold text-slate-700 mb-1.5">Attack Velocity / Dwell Time</label>
+                                    <select id="dwellTime" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Smash and Grab (Hours - dense, noisy logs)">Smash and Grab (Hours)</option>
+                                        <option value="Low and Slow (Months - sparse, hard to correlate)">Low and Slow (Months)</option>
+                                        <option value="Active/Ongoing (Attack is happening right now)">Active/Ongoing</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 gap-5 border-t border-slate-100 pt-5">
+                                <div>
+                                    <label for="environment" class="block text-sm font-semibold text-slate-700 mb-1.5">Environment Base Summary</label>
+                                    <select id="environment" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Hybrid AD, M365, on-prem file servers">Hybrid AD, M365, on-prem file servers</option>
+                                        <option value="100% Cloud-native (AWS/GCP), Identity Provider">100% Cloud-native, SSO Provider</option>
+                                        <option value="Highly segmented OT/ICS environment">Highly segmented OT/ICS environment</option>
+                                        <option value="BYOD heavy, minimal perimeter">BYOD heavy, minimal perimeter</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+                                <div class="flex justify-between items-end mb-2">
+                                    <label for="narrative" class="block text-sm font-semibold text-slate-700">Narrative Hook (Opening theme)</label>
+                                </div>
+                                
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <button type="button" class="narrative-starter text-xs font-medium bg-white border border-slate-300 hover:border-indigo-400 hover:text-indigo-600 text-slate-600 px-3 py-1.5 rounded-md shadow-sm transition-colors" data-text="Urgent Alert: You arrive on Monday morning to a flood of user tickets about locked screens and inaccessible files.">Urgent Alert</button>
+                                    <button type="button" class="narrative-starter text-xs font-medium bg-white border border-slate-300 hover:border-indigo-400 hover:text-indigo-600 text-slate-600 px-3 py-1.5 rounded-md shadow-sm transition-colors" data-text="Subtle Anomaly: During a routine log review, your dashboard flags unusual outbound traffic over several weeks.">Subtle Anomaly</button>
+                                    <button type="button" class="narrative-starter text-xs font-medium bg-white border border-slate-300 hover:border-indigo-400 hover:text-indigo-600 text-slate-600 px-3 py-1.5 rounded-md shadow-sm transition-colors" data-text="External Tip: A third-party security partner notifies your team of potential employee credentials for sale on the dark web.">External Tip</button>
+                                    <button type="button" class="narrative-starter text-xs font-medium bg-white border border-slate-300 hover:border-indigo-400 hover:text-indigo-600 text-slate-600 px-3 py-1.5 rounded-md shadow-sm transition-colors" data-text="Compliance Audit: You have 48 hours to piece together evidence of a suspected past breach before regulators arrive.">Compliance Audit</button>
+                                </div>
+                                
+                                <textarea id="narrative" rows="3" class="w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm resize-y" placeholder="Describe the opening scene or starting point for the student...">Urgent Alert: You arrive on Monday morning to a flood of user tickets about locked screens and inaccessible files.</textarea>
+                            </div>
+                        </div>
+
+                        <!-- TAB 3: Evidence & Artifacts -->
+                        <div id="tab-evidence" class="tab-pane hidden space-y-5 animate-fadeIn">
+                            <div>
+                                <p class="text-sm text-slate-500 mb-4">Select the specific artifacts the AI should generate as evidence in the interactive tool. Ensure your selections align with the Initial Access Vector chosen.</p>
+                                
+                                <!-- Tooling Environment -->
+                                <div class="mb-5 p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                                    <label for="toolingEnv" class="block text-sm font-semibold text-slate-700 mb-1.5">Defensive Tooling Environment</label>
+                                    <p class="text-xs text-slate-500 mb-2">Forces the AI to format technical logs to match specific vendor outputs.</p>
+                                    <select id="toolingEnv" class="w-full sm:w-1/2 border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Vendor Neutral / Generic Log Formats">Vendor Neutral / Generic Logs</option>
+                                        <option value="Splunk SIEM + CrowdStrike Falcon EDR">Splunk + CrowdStrike</option>
+                                        <option value="Microsoft Sentinel + Defender XDR">Microsoft Sentinel + Defender</option>
+                                        <option value="ELK Stack + Zeek/Suricata">ELK Stack + Zeek</option>
+                                    </select>
+                                </div>
+
+                                <!-- Network & Infrastructure -->
+                                <div class="mb-5">
+                                    <div class="flex items-center justify-between mb-2 border-b border-slate-100 pb-1">
+                                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Network & Infrastructure</h4>
+                                        <button type="button" class="text-[10px] font-semibold text-indigo-500 hover:text-indigo-700 select-all-btn" data-target="artifacts-network">Select All</button>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="artifacts-network">
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="PCAP Summaries" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" checked>
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">PCAP Summaries</span>
+                                        </label>
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="Firewall Logs" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" checked>
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Firewall Logs</span>
+                                        </label>
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="Proxy/DNS Logs" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Proxy/DNS Logs</span>
+                                        </label>
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="Threat Intel / OSINT Reports" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Threat Intel / OSINT</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Endpoint -->
+                                <div class="mb-5">
+                                    <div class="flex items-center justify-between mb-2 border-b border-slate-100 pb-1">
+                                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Endpoint</h4>
+                                        <button type="button" class="text-[10px] font-semibold text-indigo-500 hover:text-indigo-700 select-all-btn" data-target="artifacts-endpoint">Select All</button>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="artifacts-endpoint">
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="Windows Event Logs (4624, 4688)" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" checked>
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Windows Event Logs</span>
+                                        </label>
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="Sysmon Process Trees" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Sysmon Outputs</span>
+                                        </label>
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="EDR Console Alerts" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" checked>
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">EDR Alerts</span>
+                                        </label>
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="Memory Dump Analysis" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Memory Dump Analysis</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Cloud & App -->
+                                <div class="mb-5">
+                                    <div class="flex items-center justify-between mb-2 border-b border-slate-100 pb-1">
+                                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Cloud & Application</h4>
+                                        <button type="button" class="text-[10px] font-semibold text-indigo-500 hover:text-indigo-700 select-all-btn" data-target="artifacts-cloud">Select All</button>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="artifacts-cloud">
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="AWS CloudTrail / GCP Audit Logs" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Cloud Platform Logs</span>
+                                        </label>
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="Azure AD Sign-in Logs" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Identity/SSO Logs</span>
+                                        </label>
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="Web Server Access Logs" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Web Server Logs</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Business & Human -->
+                                <div>
+                                    <div class="flex items-center justify-between mb-2 border-b border-slate-100 pb-1">
+                                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Business & Human</h4>
+                                        <button type="button" class="text-[10px] font-semibold text-indigo-500 hover:text-indigo-700 select-all-btn" data-target="artifacts-business">Select All</button>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="artifacts-business">
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="Phishing Email Original Headers" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" checked>
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Phishing Headers</span>
+                                        </label>
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="Internal Teams/Slack Chats" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" checked>
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Internal Chat Logs</span>
+                                        </label>
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="User Interview Transcripts" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">User Interviews</span>
+                                        </label>
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="HR Termination Notices / Memos" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">HR Records</span>
+                                        </label>
+                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
+                                            <input type="checkbox" name="artifacts" value="Physical Security Logs (Badge/CCTV)" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
+                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Physical Security</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB 4: Pedagogy -->
+                        <div id="tab-pedagogy" class="tab-pane hidden space-y-5 animate-fadeIn">
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                                <div>
+                                    <label for="studentRole" class="block text-sm font-semibold text-slate-700 mb-1.5">Student Role / Perspective</label>
+                                    <select id="studentRole" class="w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Tier 1 SOC Analyst (Triage)">Tier 1 SOC Analyst (Triage)</option>
+                                        <option value="Incident Response Lead (Containment)">Incident Response Lead (Containment)</option>
+                                        <option value="Threat Hunter (Proactive Search)">Threat Hunter (Proactive Search)</option>
+                                        <option value="CISO / Director (Strategy & Comm)">CISO / Director (Strategy & Comm)</option>
+                                        <option value="Legal / Compliance Officer (Reporting)">Legal / Compliance Officer (Reporting)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="deliverableType" class="block text-sm font-semibold text-slate-700 mb-1.5">Final Capstone Deliverable</label>
+                                    <select id="deliverableType" class="w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Executive Briefing (1-pager non-technical)">Executive Briefing (1-pager non-technical)</option>
+                                        <option value="Root Cause Analysis (Technical details)">Root Cause Analysis (Technical details)</option>
+                                        <option value="Incident Timeline / Playbook Review">Incident Timeline / Playbook Review</option>
+                                        <option value="SIEM/Firewall Rule Recommendations">SIEM/Firewall Rule Recommendations</option>
+                                        <option value="Public Relations & Compliance Draft">Public Relations & Compliance Draft</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="gradingRubric" class="block text-sm font-semibold text-slate-700 mb-1.5">Assessment Focus (Rubric)</label>
+                                    <select id="gradingRubric" class="w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Technical Accuracy & Log Correlation">Technical Accuracy & Log Correlation</option>
+                                        <option value="Executive Communication & Business Impact">Executive Communication & Business Impact</option>
+                                        <option value="Process Adherence & Playbook Knowledge">Process Adherence & Playbook Knowledge</option>
+                                        <option value="Policy Adherence & Regulatory Compliance">Policy Adherence & Regulatory Compliance</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 border-t border-slate-100 pt-5">
+                                <div>
+                                    <label for="difficulty" class="block text-sm font-semibold text-slate-700 mb-1.5">Difficulty</label>
+                                    <select id="difficulty" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none sm:text-sm cursor-pointer">
+                                        <option value="Intro">Intro</option>
+                                        <option value="Intermediate">Intermediate</option>
+                                        <option value="Advanced">Advanced</option>
+                                    </select>
+                                    <p id="difficultyHelper" class="mt-2 text-[11px] leading-snug text-slate-500 font-medium"></p>
+                                </div>
+                                <div>
+                                    <label for="richness" class="block text-sm font-semibold text-slate-700 mb-1.5">Richness</label>
+                                    <select id="richness" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none sm:text-sm cursor-pointer">
+                                        <option value="Lite">Lite</option>
+                                        <option value="Standard" selected>Standard</option>
+                                        <option value="Deep‑dive">Deep‑dive</option>
+                                    </select>
+                                    <p id="richnessHelper" class="mt-2 text-[11px] leading-snug text-slate-500 font-medium"></p>
+                                </div>
+                                <div>
+                                    <label for="distractors" class="block text-sm font-semibold text-slate-700 mb-1.5">Red Herrings</label>
+                                    <select id="distractors" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none sm:text-sm cursor-pointer">
+                                        <option value="None (Straightforward path)">None (Straightforward)</option>
+                                        <option value="Low (1-2 unrelated routine alerts)">Low (1-2 routine alerts)</option>
+                                        <option value="High (Simultaneous benign IT outage masking attack)">High (Simultaneous outage)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-slate-100 pt-5">
+                                <div>
+                                    <label for="bloomsTaxonomy" class="block text-sm font-semibold text-slate-700 mb-1.5">Learning Objective (Bloom's)</label>
+                                    <select id="bloomsTaxonomy" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none sm:text-sm cursor-pointer">
+                                        <option value="Identify & Classify (Focus on finding IOCs)">Identify & Classify (Find IOCs)</option>
+                                        <option value="Analyze & Correlate (Focus on connecting disparate events)" selected>Analyze & Correlate (Connect Events)</option>
+                                        <option value="Evaluate & Strategize (Focus on policy and response decisions)">Evaluate & Strategize (Policy/Response)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="instructionalScaffolding" class="block text-sm font-semibold text-slate-700 mb-1.5">Instructional Scaffolding</label>
+                                    <select id="instructionalScaffolding" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none sm:text-sm cursor-pointer">
+                                        <option value="Guided (Questions include hints and point to specific logs)">Guided (Hints & direct log pointers)</option>
+                                        <option value="Standard (Questions are open-ended but fair)" selected>Standard (Open-ended but fair)</option>
+                                        <option value="Hostile/Time-Pressured (No hints, deliberately vague executive demands)">Hostile/Time-Pressured (No hints)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-2 border-t border-slate-100 pt-5">
+                                <label for="seatTime" class="block text-sm font-semibold text-slate-700 mb-1.5">Seat time</label>
+                                <select id="seatTime" class="w-1/3 border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none sm:text-sm cursor-pointer">
+                                    <option value="15 minutes">15 minutes</option>
+                                    <option value="30 minutes">30 minutes</option>
+                                    <option value="60 minutes">60 minutes</option>
+                                    <option value="90 minutes">90 minutes</option>
+                                    <option value="2 hours">2 hours</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 flex gap-4 border-t border-slate-100 mt-6">
+                        <button type="button" id="clearBtn" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold py-2 px-4 rounded-xl shadow-sm transition-all duration-200">
+                            Reset Defaults
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- RIGHT COLUMN: Output Card -->
+            <div class="bg-[#0f172a] rounded-2xl shadow-2xl shadow-slate-900/50 border border-slate-700 p-2 xl:p-3 flex-1 w-full xl:w-7/12 flex flex-col h-[calc(100vh-8rem)] sticky top-24">
+                
+                <div class="flex justify-between items-center px-4 pt-3 pb-4 border-b border-slate-700/50">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                        <h2 class="text-sm font-semibold text-slate-300 ml-3 tracking-wide">Generated Prompt String</h2>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span id="copyStatus" class="text-sm font-medium text-emerald-400 opacity-0 transition-opacity duration-300 bg-emerald-400/10 px-2 py-0.5 rounded">Copied!</span>
+                        <button type="button" id="copyBtn" class="text-sm bg-indigo-500 hover:bg-indigo-400 text-white font-medium py-1.5 px-4 rounded-lg shadow-sm transition-colors duration-200 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            Copy Code
+                        </button>
+                    </div>
+                </div>
+                
+                <textarea id="promptOutput" readonly class="w-full flex-1 bg-transparent border-0 py-5 px-6 text-slate-300 font-mono text-[13px] leading-relaxed resize-none focus:outline-none focus:ring-0 min-h-[500px]"></textarea>
+            </div>
+            
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Field Elements
+            const courseLevel = document.getElementById('courseLevel');
+            const learnerProfile = document.getElementById('learnerProfile');
+            const industrySelect = document.getElementById('industrySelect');
+            const industryOther = document.getElementById('industryOther');
+            const industryOtherLabel = document.getElementById('industryOtherLabel');
+            const orgSize = document.getElementById('orgSize');
+            const orgFunctions = document.getElementById('orgFunctions');
+            const orgSystems = document.getElementById('orgSystems');
+            const orgConstraints = document.getElementById('orgConstraints');
+            
+            const threatActor = document.getElementById('threatActor');
+            const accessVector = document.getElementById('accessVector');
+            const threatScenario = document.getElementById('threatScenario');
+            const frameworkAlignment = document.getElementById('frameworkAlignment');
+            const underlyingWeakness = document.getElementById('underlyingWeakness');
+            const dwellTime = document.getElementById('dwellTime');
+            const environment = document.getElementById('environment');
+            const toolingEnv = document.getElementById('toolingEnv');
+            const narrative = document.getElementById('narrative');
+            
+            const studentRole = document.getElementById('studentRole');
+            const deliverableType = document.getElementById('deliverableType');
+            const gradingRubric = document.getElementById('gradingRubric');
+            const difficulty = document.getElementById('difficulty');
+            const seatTime = document.getElementById('seatTime');
+            const richness = document.getElementById('richness');
+            const distractors = document.getElementById('distractors');
+            const bloomsTaxonomy = document.getElementById('bloomsTaxonomy');
+            const instructionalScaffolding = document.getElementById('instructionalScaffolding');
+            
+            const difficultyHelper = document.getElementById('difficultyHelper');
+            const richnessHelper = document.getElementById('richnessHelper');
+            
+            // UI Elements
+            const clearBtn = document.getElementById('clearBtn');
+            const promptOutput = document.getElementById('promptOutput');
+            const copyBtn = document.getElementById('copyBtn');
+            const copyStatus = document.getElementById('copyStatus');
+            const llmBtns = document.querySelectorAll('.llm-btn');
+            const templateBtns = document.querySelectorAll('.template-btn');
+            const narrativeStarters = document.querySelectorAll('.narrative-starter');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            const selectAllBtns = document.querySelectorAll('.select-all-btn');
+
+            let currentLLM = 'chatgpt';
+
+            const businessFunctionsMap = {
+                "Higher education": ["Admissions & Enrollment", "Research & Grants", "Student Records", "Alumni Relations"],
+                "K‑12": ["Student Information Systems", "Curriculum Management", "Staff HR & Payroll"],
+                "Healthcare": ["Patient Care & Diagnostics", "Billing & Insurance", "Research & Clinical Trials"],
+                "Financial services": ["Retail Banking", "Trading & Investments", "Loan Processing", "Wealth Management"],
+                "Manufacturing": ["Supply Chain & Procurement", "Production Line Ops", "Quality Assurance", "R&D"],
+                "Local government": ["Public Records & Permitting", "Emergency Services Dispatch", "Tax Collection"],
+                "Small business": ["E-commerce & Sales", "Inventory Management", "Customer Support"],
+                "Other": ["General Operations", "HR & Finance", "Sales & Marketing", "IT Infrastructure"]
+            };
+
+            const outcomeDescriptions = {
+                difficulty: {
+                    "Intro": "Generates obvious evidence and straightforward questions.",
+                    "Intermediate": "Requires students to correlate 2-3 logs to find the answer.",
+                    "Advanced": "Subtle clues, complex log parsing, and strategic decision making."
+                },
+                richness: {
+                    "Lite": "Shorter logs, minimal reading, faster time-to-completion.",
+                    "Standard": "Balanced mix of technical logs and business context.",
+                    "Deep‑dive": "Extensive, highly-detailed artifacts with verbose metadata."
+                }
+            };
+
+            function updateBusinessFunctions() {
+                if (!industrySelect || !orgFunctions) return;
+                const selectedIndustry = industrySelect.value;
+                const functions = businessFunctionsMap[selectedIndustry] || businessFunctionsMap["Other"];
+                
+                orgFunctions.innerHTML = '';
+                functions.forEach(func => {
+                    const option = document.createElement('option');
+                    option.value = func;
+                    option.textContent = func;
+                    orgFunctions.appendChild(option);
+                });
+            }
+
+            function updateHelpers() {
+                if (difficultyHelper && difficulty) {
+                    difficultyHelper.textContent = outcomeDescriptions.difficulty[difficulty.value] || "";
+                }
+                if (richnessHelper && richness) {
+                    richnessHelper.textContent = outcomeDescriptions.richness[richness.value] || "";
+                }
+            }
+
+            if (industrySelect) {
+                industrySelect.addEventListener('change', () => {
+                    if (industrySelect.value === 'Other') {
+                        if (industryOther) {
+                            industryOther.disabled = false;
+                            industryOther.classList.remove('bg-slate-100/50', 'text-slate-400');
+                            industryOther.classList.add('bg-white', 'text-slate-800');
+                            industryOther.focus();
+                        }
+                        if (industryOtherLabel) {
+                            industryOtherLabel.classList.remove('text-slate-400');
+                            industryOtherLabel.classList.add('text-slate-700');
+                        }
+                    } else {
+                        if (industryOther) {
+                            industryOther.disabled = true;
+                            industryOther.value = '';
+                            industryOther.classList.add('bg-slate-100/50', 'text-slate-400');
+                            industryOther.classList.remove('bg-white', 'text-slate-800');
+                        }
+                        if (industryOtherLabel) {
+                            industryOtherLabel.classList.add('text-slate-400');
+                            industryOtherLabel.classList.remove('text-slate-700');
+                        }
+                    }
+                    updateBusinessFunctions();
+                });
+            }
+
+            // Tab Switching Logic
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabBtns.forEach(b => {
+                        b.classList.remove('active', 'border-indigo-600', 'text-indigo-600');
+                        b.classList.add('border-transparent', 'text-slate-500');
+                    });
+                    tabPanes.forEach(p => p.classList.add('hidden'));
+
+                    btn.classList.add('active', 'border-indigo-600', 'text-indigo-600');
+                    btn.classList.remove('border-transparent', 'text-slate-500');
+                    const targetId = btn.dataset.target;
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) targetEl.classList.remove('hidden');
+                });
+            });
+
+            // LLM Button Logic
+            llmBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    llmBtns.forEach(b => {
+                        b.className = 'llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-white text-slate-600 font-semibold text-sm hover:border-indigo-300 hover:text-indigo-600 transition-all duration-200';
+                    });
+                    btn.className = 'llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-indigo-600 bg-indigo-600 text-white font-semibold text-sm shadow-sm transition-all duration-200';
+                    currentLLM = btn.dataset.llm;
+                    buildPrompt();
+                });
+            });
+
+            // Select All Logic for Artifacts
+            selectAllBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.dataset.target;
+                    const container = document.getElementById(targetId);
+                    if (container) {
+                        const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+                        // Check if all are currently checked
+                        const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+                        
+                        // Toggle them all
+                        checkboxes.forEach(cb => {
+                            cb.checked = !allChecked;
+                        });
+                        
+                        // Update button text
+                        btn.textContent = allChecked ? "Select All" : "Clear All";
+                        
+                        buildPrompt();
+                    }
+                });
+            });
+
+            function buildPrompt() {
+                if (!promptOutput) return;
+
+                const finalIndustry = (industrySelect && industrySelect.value === 'Other') 
+                    ? (industryOther && industryOther.value.trim() ? industryOther.value.trim() : 'Unspecified Industry')
+                    : (industrySelect ? industrySelect.value : '');
+
+                const os = orgSize ? orgSize.value : '';
+                const of = orgFunctions ? orgFunctions.value : '';
+                const osy = orgSystems ? orgSystems.value : '';
+                const oc = orgConstraints ? orgConstraints.value : '';
+                const constructedOrgOverview = `Size: ${os}. Key Business Functions: ${of}. Critical Systems: ${osy}. Organizational Constraints: ${oc}.`;
+                
+                const ta = threatActor ? threatActor.value : '';
+                const av = accessVector ? accessVector.value : '';
+                const uw = underlyingWeakness ? underlyingWeakness.value : '';
+                const dt = dwellTime ? dwellTime.value : '';
+                const ts = threatScenario ? threatScenario.value : '';
+                const fa = frameworkAlignment ? frameworkAlignment.value : '';
+                const constructedThreat = `Actor: ${ta}. Initial Access: ${av}. Underlying Weakness: ${uw}. Velocity/Dwell Time: ${dt}. Action/Goal: ${ts}. Framework Alignment: ${fa}.`;
+
+                const selectedArtifactsArray = Array.from(document.querySelectorAll('input[name="artifacts"]:checked')).map(cb => cb.value);
+                const selectedArtifacts = selectedArtifactsArray.length > 0 ? selectedArtifactsArray.join(', ') : 'Standard mix of policy, technical, and business artifacts';
+
+                const cl = courseLevel ? courseLevel.value : '';
+                const lp = learnerProfile ? learnerProfile.value : '';
+                const ind = finalIndustry;
+                const oo = constructedOrgOverview;
+                const tm = constructedThreat;
+                const env = environment ? environment.value : '';
+                const te = toolingEnv ? toolingEnv.value : '';
+                
+                const diff = difficulty ? difficulty.value : '';
+                const st = seatTime ? seatTime.value : '';
+                const nar = narrative ? narrative.value : '';
+                const role = studentRole ? studentRole.value : '';
+                const deliv = deliverableType ? deliverableType.value : '';
+                const rubric = gradingRubric ? gradingRubric.value : '';
+                const dist = distractors ? distractors.value : '';
+                const rich = richness ? richness.value : '';
+                const bloom = bloomsTaxonomy ? bloomsTaxonomy.value : '';
+                const scaffold = instructionalScaffolding ? instructionalScaffolding.value : '';
+
+                let template = '';
+
+                if (currentLLM === 'claude') {
+                    // Claude-optimized using XML tags
+                    template = `You are an expert front‑end developer and cybersecurity instructional designer.
+
+<goal>
+Recreate the same general look, layout, and interaction pattern as my existing "AI Workforce" interactive at https://sands-mvcc.github.io/AI/workforce.html, but instead of AI workforce content, build a cybersecurity case study interactive for students. Do not attempt to fetch or reference that URL. Instead, approximate its behavior from the description below.
+</goal>
+
+<design_specifications>
+- Card‑based layout with a simple top title area.
+- A main content area with multiple cards students can click.
+- Clicking a card reveals more detailed content on the same page (no navigation to other pages).
+- Clean, neutral styling with responsive behavior so it looks good on desktop and mobile.
+</design_specifications>
+
+<case_context>
+Course level: ${cl}
+Learner profile: ${lp}
+Student Role: ${role}
+Industry: ${ind}
+Organization details: ${oo}
+
+Threat mechanics: ${tm}
+Environment summary: ${env}
+Defensive Tooling Format: ${te}
+
+Pedagogy:
+- Difficulty: ${diff}
+- Richness/Depth: ${rich}
+- Seat time target: ${st}
+- Distractors/Red Herrings: ${dist}
+- Learning Objective (Bloom's): ${bloom}
+- Instructional Scaffolding/Hints: ${scaffold}
+- Final Deliverable: ${deliv}
+- Grading Focus: ${rubric}
+</case_context>
+
+<narrative>
+${nar}
+</narrative>
+
+<required_sections>
+Create a single‑page interactive with these major areas, using a card‑based layout:
+
+1. Intro / Overview card
+   - Shows course level, industry, and a short summary of the incident.
+   - Includes a brief "You are a ${role}..." framing for the student.
+
+2. Artifacts card group
+   - A set of clickable cards grouped under three headings: Policies & Procedures, Technical Evidence, and Business/Communication.
+   - You MUST generate realistic, detailed artifacts based EXACTLY on these requested types:
+     [ ${selectedArtifacts} ]
+   - Format the technical logs to match the syntax and style of [ ${te} ].
+   - If [ ${dist} ] includes distractors, weave those benign anomalies into the logs.
+   - Each artifact card shows an ID (e.g., T1, P1) and a short label.
+   - When clicked, detailed artifact content appears in a display panel area on the same page.
+
+3. Questions card group
+   - A card labeled "Analysis Questions" that reveals a list of 6–8 open‑ended questions (Q1–Q8).
+   - Each question explicitly references at least one artifact ID.
+   - Match the tone and level of hints in the questions to the [ ${scaffold} ] setting.
+   - Under each question, add a collapsed "Instructor Notes" area that expands on click.
+
+4. Decision Points card group
+   - A card labeled "Decisions" that reveals 2–3 decision blocks.
+   - Each decision block shows a scenario, three option buttons (A/B/C), and reveals consequence text directly below when clicked.
+
+5. Capstone / Wrap‑up card
+   - A card labeled "Capstone Assignment" that reveals the assignment description for a [ ${deliv} ] and a large <textarea> for responses.
+   - Include a short, bulleted grading rubric focusing on [ ${rubric} ] below the assignment description.
+</required_sections>
+
+<interaction_and_styling>
+- Keep all behavior in vanilla JavaScript (addEventListener, classList, etc.). No page reloads.
+- Use a light background, white cards with subtle drop shadows, rounded corners.
+- Use CSS flexbox or grid for card layout. Clean sans‑serif font stack.
+- Fully responsive: card grid with multiple columns and side-by-side artifact list/detail on wide screens; stacked vertically on narrow screens.
+</interaction_and_styling>
+
+<pedagogical_constraints>
+- Match language complexity to ${cl}.
+- Explain specialized jargon briefly on first use.
+- Ensure all generated artifacts are used by at least one question or decision.
+</pedagogical_constraints>
+
+<output_format>
+- Return ONLY a single, complete HTML5 document.
+- Start with <!DOCTYPE html> and include <html>, <head>, <body>.
+- All CSS must be in a <style> block in <head>.
+- All JavaScript must be in a <script> block at the end of <body>.
+- Do not output any explanation or markdown, only the HTML file contents.
+</output_format>`;
+                } else if (currentLLM === 'gemini') {
+                    // Gemini optimized
+                    template = `You are an expert front‑end developer and cybersecurity instructional designer.  
+
+## GOAL  
+Build a cybersecurity case study interactive for students. The design must approximate my existing "AI Workforce" interactive (card‑based layout, single page, clean neutral styling, responsive).
+
+## CASE STUDY CONTEXT
+* **Course level:** ${cl}
+* **Learner profile:** ${lp}
+* **Student Role:** ${role}
+* **Industry:** ${ind}
+* **Organization details:** ${oo}
+* **Threat mechanics:** ${tm}
+* **Environment summary:** ${env}
+* **Defensive Tooling Format:** ${te}
+* **Difficulty:** ${diff} (Distractors: ${dist})
+* **Richness/Depth:** ${rich}
+* **Seat time target:** ${st}
+* **Learning Objective:** ${bloom}
+* **Scaffolding:** ${scaffold}
+* **Final Deliverable:** ${deliv}
+* **Grading Focus:** ${rubric}
+
+## NARRATIVE
+${nar}
+
+## REQUIRED SECTIONS (Single-page, card‑based layout)
+1. **Intro / Overview card:** Course level, industry, incident summary, and "You are a ${role}..." framing.
+2. **Artifacts card group:** Clickable cards grouped into Policies, Technical, and Business. 
+   - CRITICAL: You MUST generate content for these specific requested artifacts: [ ${selectedArtifacts} ].
+   - Format logs to match [ ${te} ]. Include distractors based on the parameter above.
+   - Clicking updates a detail pane on the same page. 
+3. **Questions card group:** 6-8 open-ended questions referencing artifacts. Include collapsed "Instructor Notes" under each. Apply the requested ${scaffold} constraints.
+4. **Decision Points card group:** 2-3 decision blocks with A/B/C options revealing consequence text without page reload.
+5. **Capstone card:** Assignment description for [ ${deliv} ] and a <textarea>. Include a short bulleted grading rubric evaluating [ ${rubric} ].
+
+## TECHNICAL & STYLING RULES
+* Vanilla JS only. No framework dependencies.
+* Light background, white cards, subtle shadows, rounded corners, sans-serif font.
+* Fully responsive (flexbox/grid layout).
+
+## PEDAGOGICAL CONSTRAINTS
+* Match complexity to ${cl}. Explain jargon.
+* Use all artifacts at least once. Realism suited for ${ind}.
+
+## STRICT OUTPUT REQUIREMENTS
+* CRITICAL: Return EXACTLY ONE complete HTML5 document.
+* CRITICAL: Do NOT wrap the HTML in markdown code blocks (e.g., do not use \`\`\`html ... \`\`\`). Output the raw HTML directly so it can be immediately copied and run.
+* Put CSS in <style> and JS in <script> inside the file. No external dependencies except fonts/icons.
+* Zero conversational filler. Start your response directly with <!DOCTYPE html>.`;
+                } else {
+                    // Default / ChatGPT optimized
+                    template = `You are an expert front‑end developer and cybersecurity instructional designer.  
+
+Goal  
+Recreate the same general look, layout, and interaction pattern as my existing “AI Workforce” interactive at https://sands-mvcc.github.io/AI/workforce.html, but instead of AI workforce content, build a cybersecurity case study interactive for students.  
+
+Do not attempt to fetch or reference that URL. Instead, approximate its behavior from this description:  
+- Card‑based layout with a simple top title area.  
+- A main content area with multiple cards students can click.  
+- Clicking a card reveals more detailed content on the same page (no navigation to other pages).  
+- Clean, neutral styling with responsive behavior so it looks good on desktop and mobile.  
+
+Case Study Specification (Content You Must Use)  
+Build the interactive around the following case context and narrative:  
+
+Course level: ${cl}  
+Learner profile: ${lp}  
+Student Role: ${role}
+Industry: ${ind}  
+Organization details: ${oo}  
+Threat mechanics: ${tm}  
+Environment summary: ${env}  
+Defensive Tooling Format: ${te}
+Difficulty: ${diff}  (Distractors/Red Herrings: ${dist})
+Richness/Depth: ${rich}
+Seat time target: ${st}
+Learning Objective: ${bloom}
+Scaffolding: ${scaffold}
+Final Deliverable: ${deliv}
+Grading Focus: ${rubric}
+
+Student‑facing narrative (show in the intro section, use this as your storyline):  
+${nar}  
+
+Required Sections / Cards (mirror workforce tool style, but with case content)  
+Create a single‑page interactive with these major areas, using a card‑based layout:  
+
+1. Intro / Overview card  
+   - Shows course level, industry, and a short summary of the incident.  
+   - Includes a brief “You are a ${role}…” framing for the student.  
+
+2. Artifacts card group  
+   - A set of clickable cards grouped under three headings: Policies & Procedures, Technical Evidence, Business / Communication.  
+   - CRITICAL REQUIREMENT: You must generate content for exactly these requested artifacts: [ ${selectedArtifacts} ].
+   - Format the technical artifacts to look like outputs from [ ${te} ].
+   - Each artifact card shows an ID (P1, T2, etc.) and a short label.  
+   - When a card is clicked, detailed artifact content appears in a display panel area on the same page (like a “detail” pane).  
+
+3. Questions card group  
+   - A card labeled “Analysis Questions” that, when clicked, reveals a list of 6–8 open‑ended questions (Q1–Q8).  
+   - Each question should explicitly reference at least one artifact ID (e.g., “Using Technical Artifact T2…”).  
+   - Apply the rules of the requested ${scaffold} to how questions are framed.
+   - Under each question, add a collapsed “Instructor Notes” area that expands on click to show brief expected insights; keep this hidden by default.  
+
+4. Decision Points card group  
+   - A card labeled “Decisions” that reveals 2–3 decision blocks (D1–D3).  
+   - Each decision block shows:  
+     - A short scenario description.  
+     - Three buttons for options A/B/C.  
+     - When a button is clicked, show the consequence text for that option directly below the decision.  
+
+5. Capstone / Wrap‑up card  
+   - A card labeled “Capstone Assignment” that reveals:  
+     - A clear assignment description for a [ ${deliv} ] aligned to the course level.  
+     - A short, bulleted grading rubric focused on [ ${rubric} ].
+     - A large <textarea> for students to type or paste their response.  
+
+Interaction & Layout Requirements (match workforce tool behaviorally)  
+- Use a card grid similar to the workforce page: multiple cards visible.  
+- Keep all behavior in vanilla JavaScript (addEventListener, classList.add/remove, etc.).  
+
+Styling Requirements (approximate workforce look & feel)  
+- Use a light background, white cards with subtle drop shadows, rounded corners.  
+- Use CSS flexbox or grid for card layout.  
+- Make the layout responsive (stacking on mobile, side-by-side on wide screens).  
+
+Pedagogical Constraints  
+- Match language complexity to ${cl}.  
+- Explain specialized jargon briefly on first use.  
+- Ensure all artifacts are used by at least one question or decision.  
+
+Output Format  
+- Return a single, complete HTML5 document.  
+  - Start with <!DOCTYPE html> and include <html>, <head>, <body>.  
+  - All CSS must be in a <style> block in <head>.  
+  - All JavaScript must be in a <script> block at the end of <body>.  
+- Do not output any explanation or markdown, only the HTML file contents.`;
+                }
+
+                promptOutput.value = template;
+            }
+
+            const templateData = {
+                ransomware: {
+                    courseLevel: "Introductory / Security+",
+                    learnerProfile: "Junior IT professionals transitioning to security",
+                    industrySelect: "Healthcare",
+                    orgSize: "Medium (51-250 employees)",
+                    orgFunctions: "Patient Care & Diagnostics",
+                    orgSystems: "Electronic Health Records (EHR)",
+                    orgConstraints: "Understaffed / Burned out team",
+                    threatActor: "Cybercriminal Syndicate (Financial Gain)",
+                    accessVector: "Spear-phishing (Malicious link/attachment)",
+                    underlyingWeakness: "Missing or bypassed Multi-Factor Authentication (MFA)",
+                    dwellTime: "Smash and Grab (Hours - dense, noisy logs)",
+                    threatScenario: "Lateral movement to deploy ransomware on critical servers",
+                    frameworkAlignment: "MITRE ATT&CK (Enterprise)",
+                    environment: "Hybrid AD, M365, on-prem file servers",
+                    toolingEnv: "Microsoft Sentinel + Defender XDR",
+                    narrative: "Urgent Alert: You arrive on Monday morning to a flood of user tickets about locked screens and inaccessible files.",
+                    studentRole: "Tier 1 SOC Analyst (Triage)",
+                    deliverableType: "Incident Timeline / Playbook Review",
+                    gradingRubric: "Process Adherence & Playbook Knowledge",
+                    difficulty: "Intermediate",
+                    seatTime: "60 minutes",
+                    richness: "Standard",
+                    distractors: "Low (1-2 unrelated routine alerts)",
+                    bloomsTaxonomy: "Identify & Classify (Focus on finding IOCs)",
+                    instructionalScaffolding: "Guided (Questions include hints and point to specific logs)",
+                    artifacts: ["PCAP Summaries", "Firewall Logs", "Windows Event Logs (4624, 4688)", "EDR Console Alerts", "Phishing Email Original Headers", "Internal Teams/Slack Chats"]
+                },
+                insider: {
+                    courseLevel: "Intermediate (SOC / Blue Team)",
+                    learnerProfile: "Current security analysts expanding their skillset",
+                    industrySelect: "Financial services",
+                    orgSize: "Enterprise (1000+ employees)",
+                    orgFunctions: "Trading & Investments",
+                    orgSystems: "Cloud-native SaaS applications",
+                    orgConstraints: "Well-funded / Mature Security",
+                    threatActor: "Malicious Insider (Revenge/Financial)",
+                    accessVector: "Physical Access (USB Drop / Tailgating)",
+                    underlyingWeakness: "Human Negligence / Shadow IT",
+                    dwellTime: "Low and Slow (Months - sparse, hard to correlate)",
+                    threatScenario: "Silent exfiltration of sensitive database records",
+                    frameworkAlignment: "MITRE ATT&CK (Enterprise)",
+                    environment: "100% Cloud-native (AWS/GCP), Identity Provider",
+                    toolingEnv: "Splunk SIEM + CrowdStrike Falcon EDR",
+                    narrative: "Subtle Anomaly: During a routine log review, your dashboard flags unusual outbound traffic over several weeks.",
+                    studentRole: "Threat Hunter (Proactive Search)",
+                    deliverableType: "Root Cause Analysis (Technical details)",
+                    gradingRubric: "Technical Accuracy & Log Correlation",
+                    difficulty: "Advanced",
+                    seatTime: "90 minutes",
+                    richness: "Deep‑dive",
+                    distractors: "High (Simultaneous benign IT outage masking attack)",
+                    bloomsTaxonomy: "Analyze & Correlate (Focus on connecting disparate events)",
+                    instructionalScaffolding: "Standard (Questions are open-ended but fair)",
+                    artifacts: ["Proxy/DNS Logs", "Sysmon Process Trees", "Cloud Platform Logs", "Identity/SSO Logs", "Internal Teams/Slack Chats", "User Interview Transcripts"]
+                },
+                supplychain: {
+                    courseLevel: "Advanced (Architecture / Engineering)",
+                    learnerProfile: "Business leaders and executives",
+                    industrySelect: "Manufacturing",
+                    orgSize: "Large (251-1000 employees)",
+                    orgFunctions: "Supply Chain & Procurement",
+                    orgSystems: "Industrial Control Systems (ICS/SCADA)",
+                    orgConstraints: "Legacy Tech Debt (Outdated OS)",
+                    threatActor: "Nation-State / APT (Espionage/Theft)",
+                    accessVector: "Supply Chain Compromise (3rd party software)",
+                    underlyingWeakness: "Unpatched CVE / Zero-Day Vulnerability",
+                    dwellTime: "Low and Slow (Months - sparse, hard to correlate)",
+                    threatScenario: "Sabotage and deletion of primary and backup systems",
+                    frameworkAlignment: "MITRE ATT&CK (ICS)",
+                    environment: "Highly segmented OT/ICS environment",
+                    toolingEnv: "ELK Stack + Zeek/Suricata",
+                    narrative: "External Tip: A third-party security partner notifies your team of potential employee credentials for sale on the dark web.",
+                    studentRole: "CISO / Director (Strategy & Comm)",
+                    deliverableType: "Executive Briefing (1-pager non-technical)",
+                    gradingRubric: "Executive Communication & Business Impact",
+                    difficulty: "Advanced",
+                    seatTime: "2 hours",
+                    richness: "Deep‑dive",
+                    distractors: "Low (1-2 unrelated routine alerts)",
+                    bloomsTaxonomy: "Evaluate & Strategize (Focus on policy and response decisions)",
+                    instructionalScaffolding: "Hostile/Time-Pressured (No hints, deliberately vague executive demands)",
+                    artifacts: ["Firewall Logs", "Memory Dump Analysis", "Web Server Access Logs", "Threat Intel / OSINT Reports", "Internal Teams/Slack Chats"]
+                }
+            };
+
+            templateBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const data = templateData[btn.dataset.template];
+                    if(data) {
+                        Object.keys(data).forEach(id => {
+                            if (id !== 'artifacts') {
+                                const el = document.getElementById(id);
+                                if(el) el.value = data[id];
+                            }
+                        });
+                        
+                        const allCheckboxes = document.querySelectorAll('input[name="artifacts"]');
+                        allCheckboxes.forEach(cb => {
+                            cb.checked = data.artifacts.includes(cb.value);
+                        });
+                        
+                        if (industryOther) {
+                            industryOther.disabled = true;
+                            industryOther.value = '';
+                            industryOther.classList.add('bg-slate-100/50', 'text-slate-400');
+                            industryOther.classList.remove('bg-white', 'text-slate-800');
+                        }
+                        if (industryOtherLabel) {
+                            industryOtherLabel.classList.add('text-slate-400');
+                            industryOtherLabel.classList.remove('text-slate-700');
+                        }
+                        
+                        updateBusinessFunctions();
+                        if (orgFunctions) orgFunctions.value = data.orgFunctions;
+                        
+                        const originalText = btn.textContent;
+                        btn.textContent = "Loaded!";
+                        btn.classList.replace('text-indigo-700', 'text-emerald-700');
+                        btn.classList.replace('border-indigo-200', 'border-emerald-300');
+                        btn.classList.replace('bg-white', 'bg-emerald-50');
+                        
+                        setTimeout(() => {
+                            btn.textContent = originalText;
+                            btn.classList.replace('text-emerald-700', 'text-indigo-700');
+                            btn.classList.replace('border-emerald-300', 'border-indigo-200');
+                            btn.classList.replace('bg-emerald-50', 'bg-white');
+                        }, 1500);
+
+                        updateHelpers();
+                        buildPrompt();
+                    }
+                });
+            });
+
+            // Ensure all items exist before applying event listeners
+            const formInputs = [
+                courseLevel, learnerProfile, industrySelect, industryOther,
+                orgSize, orgFunctions, orgSystems, orgConstraints, 
+                threatActor, accessVector, threatScenario, frameworkAlignment, underlyingWeakness, dwellTime, environment, toolingEnv, narrative,
+                studentRole, deliverableType, gradingRubric, difficulty, seatTime, richness, distractors, bloomsTaxonomy, instructionalScaffolding
+            ];
+
+            formInputs.forEach(input => {
+                if (input) {
+                    input.addEventListener('change', () => {
+                        updateHelpers();
+                        buildPrompt();
+                    });
+                    if (input.tagName === 'INPUT' || input.tagName === 'TEXTAREA') {
+                        input.addEventListener('input', () => {
+                            updateHelpers();
+                            buildPrompt();
+                        });
+                    }
+                }
+            });
+
+            document.querySelectorAll('input[name="artifacts"]').forEach(cb => {
+                cb.addEventListener('change', buildPrompt);
+            });
+
+            narrativeStarters.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (narrative) {
+                        narrative.value = btn.dataset.text;
+                        buildPrompt();
+                    }
+                });
+            });
+
+            // Initialize defaults
+            updateBusinessFunctions();
+            updateHelpers();
+            buildPrompt();
+
+            if (copyBtn) {
+                copyBtn.addEventListener('click', () => {
+                    if (!promptOutput || !promptOutput.value) return; 
+
+                    promptOutput.select();
+                    promptOutput.setSelectionRange(0, 99999); 
+                    
+                    let success = false;
+                    try {
+                        success = document.execCommand('copy');
+                    } catch (err) {
+                        console.warn('Fallback copy needed');
+                    }
+
+                    if (!success && navigator.clipboard) {
+                        navigator.clipboard.writeText(promptOutput.value).then(() => {
+                            success = true;
+                        }).catch(err => {
+                            console.error('Failed to copy text: ', err);
+                        });
+                    }
+
+                    if (success && copyStatus) {
+                        copyStatus.classList.remove('opacity-0');
+                        setTimeout(() => {
+                            copyStatus.classList.add('opacity-0');
+                        }, 2000);
+                    }
+                    
+                    window.getSelection().removeAllRanges();
+                });
+            }
+
+            if (clearBtn) {
+                clearBtn.addEventListener('click', () => {
+                    const form = document.getElementById('promptForm');
+                    if (form) form.reset();
+                    
+                    if (industryOther) {
+                        industryOther.disabled = true;
+                        industryOther.classList.add('bg-slate-100/50', 'text-slate-400');
+                        industryOther.classList.remove('bg-white', 'text-slate-800');
+                    }
+                    if (industryOtherLabel) {
+                        industryOtherLabel.classList.add('text-slate-400');
+                        industryOtherLabel.classList.remove('text-slate-700');
+                    }
+                    
+                    currentLLM = 'chatgpt';
+                    llmBtns.forEach(b => {
+                        if(b.dataset.llm === 'chatgpt') {
+                            b.className = 'llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-indigo-600 bg-indigo-600 text-white font-semibold text-sm shadow-sm transition-all duration-200';
+                        } else {
+                            b.className = 'llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-white text-slate-600 font-semibold text-sm hover:border-indigo-300 hover:text-indigo-600 transition-all duration-200';
+                        }
+                    });
+
+                    updateBusinessFunctions();
+                    updateHelpers();
+                    buildPrompt();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
