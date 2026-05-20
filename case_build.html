@@ -3,130 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity Case Study Prompt Builder</title>
+    <title>Cybersecurity Case Study Builder</title>
     
     <!-- Load Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Load Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Serif for Elegance, Sans for Precision -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Custom styling for minor tweaks -->
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Tailwind slate-50 */
-            color: #0f172a; /* Tailwind slate-900 */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #fafafa; 
+            color: #18181b; 
+        }
+        h1, h2, h3, .font-serif { 
+            font-family: 'Playfair Display', serif; 
+        }
+        .prompt-textarea { 
+            font-family: 'ui-monospace', 'Cascadia Code', 'Source Code Pro', monospace; 
         }
         
-        /* Custom scrollbar for output */
-        textarea::-webkit-scrollbar {
-            width: 8px;
+        .card { 
+            background: white; 
+            border: 1px solid #e4e4e7; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05); 
         }
-        textarea::-webkit-scrollbar-track {
-            background: transparent;
+        .glass-panel { 
+            background: rgba(255, 255, 255, 0.8); 
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px);
         }
-        textarea::-webkit-scrollbar-thumb {
-            background: #475569; /* slate-600 */
-            border-radius: 4px;
+        
+        /* Custom scrollbar for form panel */
+        .form-panel-scroll::-webkit-scrollbar { width: 6px; }
+        .form-panel-scroll::-webkit-scrollbar-track { background: transparent; }
+        .form-panel-scroll::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 4px; }
+        .form-panel-scroll::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
+        
+        /* Hide scrollbar for horizontal tabs but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .tab-btn.active-tab { 
+            border-bottom: 2px solid #4f46e5 !important; 
+            color: #4f46e5 !important; 
         }
-        textarea::-webkit-scrollbar-thumb:hover {
-            background: #64748b; /* slate-500 */
+        
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(5px); } 
+            to { opacity: 1; transform: translateY(0); } 
         }
-
-        /* Smooth section transitions */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        /* Hide scrollbar for tabs but keep functionality */
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-
-        /* Tab fade animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-            animation: fadeIn 0.3s ease-out forwards;
+        .animate-fadeIn { 
+            animation: fadeIn 0.3s ease-out forwards; 
         }
     </style>
 </head>
 <body class="min-h-screen pb-12 selection:bg-indigo-100 selection:text-indigo-900">
 
-    <header class="glass-panel border-b border-slate-200 sticky top-0 z-20 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-3">
-            <div class="bg-indigo-600 p-2 rounded-lg text-white shadow-md shadow-indigo-200">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+    <header class="glass-panel border-b border-zinc-200 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center gap-4">
+            <div class="bg-indigo-600 p-2.5 rounded-xl text-white shadow-lg shadow-indigo-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
             </div>
             <div>
-                <h1 class="text-xl font-bold text-slate-900 tracking-tight">Cybersecurity Case Study Prompt Builder</h1>
-                <p class="text-xs font-medium text-slate-500 mt-0.5">Create a one‑shot prompt that generates a workforce‑style HTML interactive.</p>
+                <h1 class="text-2xl sm:text-3xl font-bold text-zinc-900 tracking-tight">Case Study Builder</h1>
+                <p class="text-xs sm:text-sm text-zinc-500 font-medium tracking-wide uppercase mt-0.5">Workforce-Style Pedagogical Engineering</p>
             </div>
         </div>
     </header>
 
     <main class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-        <div class="flex flex-col xl:flex-row gap-8">
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
             
             <!-- LEFT COLUMN: Form Card -->
-            <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/40 border border-slate-200 p-6 xl:p-8 flex-1 w-full xl:w-5/12 h-fit">
-                <div class="flex items-center justify-between mb-6 border-b border-slate-100 pb-4">
-                    <h2 class="text-lg font-semibold text-slate-800">Case Study Parameters</h2>
-                </div>
+            <div class="bg-white card rounded-2xl p-6 lg:p-8 flex-1 w-full lg:w-5/12 sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto form-panel-scroll z-10">
+                <h2 class="text-2xl font-bold text-zinc-800 mb-8 border-b border-zinc-100 pb-4">Configuration</h2>
                 
-                <form id="promptForm" class="space-y-6" onsubmit="event.preventDefault();">
+                <form id="promptForm" class="space-y-8" onsubmit="event.preventDefault();">
                     
                     <!-- Quick-Start Templates -->
-                    <div class="bg-indigo-50/60 p-4 rounded-xl border border-indigo-100">
-                        <h3 class="text-xs font-bold uppercase tracking-wider text-indigo-800 mb-3 flex items-center gap-2">
+                    <div class="bg-zinc-50 p-5 rounded-xl border border-zinc-200">
+                        <label class="block text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4 flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                            Quick-Start Templates
-                        </h3>
-                        <div class="flex flex-wrap gap-2.5">
-                            <button type="button" class="template-btn flex-1 min-w-[120px] text-xs font-semibold bg-white border border-indigo-200 text-indigo-700 px-3 py-2 rounded-lg hover:bg-indigo-50 hover:border-indigo-300 transition-colors shadow-sm text-center" data-template="ransomware">Healthcare Ransomware</button>
-                            <button type="button" class="template-btn flex-1 min-w-[120px] text-xs font-semibold bg-white border border-indigo-200 text-indigo-700 px-3 py-2 rounded-lg hover:bg-indigo-50 hover:border-indigo-300 transition-colors shadow-sm text-center" data-template="insider">Financial Insider</button>
-                            <button type="button" class="template-btn flex-1 min-w-[120px] text-xs font-semibold bg-white border border-indigo-200 text-indigo-700 px-3 py-2 rounded-lg hover:bg-indigo-50 hover:border-indigo-300 transition-colors shadow-sm text-center" data-template="supplychain">ICS Supply Chain</button>
+                            Quick-Start Scenarios
+                        </label>
+                        <div class="flex flex-wrap gap-3">
+                            <button type="button" class="template-btn flex-1 min-w-[120px] text-xs font-semibold bg-white border border-zinc-200 hover:border-indigo-400 hover:text-indigo-700 text-zinc-700 px-4 py-3 rounded-lg shadow-sm transition-all" data-template="ransomware">Healthcare Ransomware</button>
+                            <button type="button" class="template-btn flex-1 min-w-[120px] text-xs font-semibold bg-white border border-zinc-200 hover:border-indigo-400 hover:text-indigo-700 text-zinc-700 px-4 py-3 rounded-lg shadow-sm transition-all" data-template="insider">Financial Insider</button>
+                            <button type="button" class="template-btn flex-1 min-w-[120px] text-xs font-semibold bg-white border border-zinc-200 hover:border-indigo-400 hover:text-indigo-700 text-zinc-700 px-4 py-3 rounded-lg shadow-sm transition-all" data-template="supplychain">ICS Supply Chain</button>
                         </div>
                     </div>
 
                     <!-- Target Platform -->
                     <div>
-                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
+                        <label class="block text-xs font-bold uppercase tracking-widest text-zinc-400 mb-4 flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
                             Target AI Platform
-                        </h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <button type="button" data-llm="chatgpt" class="llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-indigo-600 bg-indigo-600 text-white font-semibold text-sm shadow-sm transition-all duration-200">ChatGPT</button>
-                            <button type="button" data-llm="claude" class="llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-white text-slate-600 font-semibold text-sm hover:border-indigo-300 hover:text-indigo-600 transition-all duration-200">Claude</button>
-                            <button type="button" data-llm="gemini" class="llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-white text-slate-600 font-semibold text-sm hover:border-indigo-300 hover:text-indigo-600 transition-all duration-200">Gemini</button>
+                        </label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <button type="button" data-llm="chatgpt" class="llm-btn flex items-center justify-center py-3 rounded-xl border-2 border-indigo-600 bg-indigo-600 text-white font-semibold text-sm shadow-md transition-all">ChatGPT</button>
+                            <button type="button" data-llm="claude" class="llm-btn flex items-center justify-center py-3 rounded-xl border-2 border-zinc-200 bg-white text-zinc-600 font-semibold text-sm hover:border-indigo-400 hover:text-indigo-600 transition-all">Claude</button>
+                            <button type="button" data-llm="gemini" class="llm-btn flex items-center justify-center py-3 rounded-xl border-2 border-zinc-200 bg-white text-zinc-600 font-semibold text-sm hover:border-indigo-400 hover:text-indigo-600 transition-all">Gemini</button>
                         </div>
                     </div>
 
                     <!-- TABS NAVIGATION -->
-                    <div class="flex border-b border-slate-200 mt-6 overflow-x-auto hide-scrollbar">
-                        <button type="button" class="tab-btn active px-4 py-2.5 text-sm font-semibold border-b-2 border-indigo-600 text-indigo-600 whitespace-nowrap transition-colors" data-target="tab-org">1. Organization</button>
-                        <button type="button" class="tab-btn px-4 py-2.5 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 whitespace-nowrap transition-colors" data-target="tab-threat">2. The Threat</button>
-                        <button type="button" class="tab-btn px-4 py-2.5 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 whitespace-nowrap transition-colors" data-target="tab-evidence">3. Artifacts</button>
-                        <button type="button" class="tab-btn px-4 py-2.5 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 whitespace-nowrap transition-colors" data-target="tab-pedagogy">4. Pedagogy</button>
+                    <div class="flex border-b border-zinc-200 overflow-x-auto hide-scrollbar">
+                        <button type="button" class="tab-btn active-tab flex items-center gap-2 px-4 py-3 text-sm font-semibold text-zinc-500 border-b-2 border-transparent hover:text-zinc-800 transition-colors whitespace-nowrap" data-target="tab-org">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-2m-9-2l2-2 2 2m0-4l2-2 2 2m-2-8l2-2 2 2m-2 10l2-2 2 2"/></svg> Org
+                        </button>
+                        <button type="button" class="tab-btn flex items-center gap-2 px-4 py-3 text-sm font-semibold text-zinc-500 border-b-2 border-transparent hover:text-zinc-800 transition-colors whitespace-nowrap" data-target="tab-threat">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Threat
+                        </button>
+                        <button type="button" class="tab-btn flex items-center gap-2 px-4 py-3 text-sm font-semibold text-zinc-500 border-b-2 border-transparent hover:text-zinc-800 transition-colors whitespace-nowrap" data-target="tab-evidence">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> Evidence
+                        </button>
+                        <button type="button" class="tab-btn flex items-center gap-2 px-4 py-3 text-sm font-semibold text-zinc-500 border-b-2 border-transparent hover:text-zinc-800 transition-colors whitespace-nowrap" data-target="tab-pedagogy">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477-4.5 1.253"/></svg> Pedagogy
+                        </button>
                     </div>
 
-                    <div class="tab-content relative min-h-[400px] pt-4">
+                    <div class="tab-content relative min-h-[450px]">
                         
                         <!-- TAB 1: Organization & Audience -->
-                        <div id="tab-org" class="tab-pane active space-y-5 animate-fadeIn">
+                        <div id="tab-org" class="tab-pane active space-y-6 animate-fadeIn">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
-                                    <label for="courseLevel" class="block text-sm font-semibold text-slate-700 mb-1.5">Course Level</label>
-                                    <select id="courseLevel" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="courseLevel" class="block text-sm font-semibold text-zinc-700 mb-1.5">Course Level</label>
+                                    <select id="courseLevel" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="K-12 / Cyber Foundations">K-12 / Cyber Foundations</option>
                                         <option value="Pre-Security (A+ / Network+ level)">Pre-Security (A+ / Network+ level)</option>
                                         <option value="Introductory / Security+" selected>Introductory / Security+</option>
@@ -136,8 +141,8 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="learnerProfile" class="block text-sm font-semibold text-slate-700 mb-1.5">Learner Profile</label>
-                                    <select id="learnerProfile" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="learnerProfile" class="block text-sm font-semibold text-zinc-700 mb-1.5">Learner Profile</label>
+                                    <select id="learnerProfile" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="High School / Gen Z Digital Natives">High School / Gen Z Digital Natives</option>
                                         <option value="Career Switchers (Non-IT Backgrounds)">Career Switchers (Non-IT Backgrounds)</option>
                                         <option value="Junior IT professionals transitioning to security" selected>Junior IT to Security</option>
@@ -149,10 +154,10 @@
                                 </div>
                             </div>
                             
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-slate-100 pt-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-zinc-100 pt-6">
                                 <div>
-                                    <label for="industrySelect" class="block text-sm font-semibold text-slate-700 mb-1.5">Industry</label>
-                                    <select id="industrySelect" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="industrySelect" class="block text-sm font-semibold text-zinc-700 mb-1.5">Industry</label>
+                                    <select id="industrySelect" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Higher education">Higher education</option>
                                         <option value="K‑12">K‑12</option>
                                         <option value="Healthcare">Healthcare</option>
@@ -164,15 +169,15 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label id="industryOtherLabel" for="industryOther" class="block text-sm font-semibold text-slate-400 mb-1.5">If Other, specify</label>
-                                    <input type="text" id="industryOther" disabled class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-100/50 text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm transition-colors">
+                                    <label id="industryOtherLabel" for="industryOther" class="block text-sm font-semibold text-zinc-400 mb-1.5 transition-colors">If Other, specify</label>
+                                    <input type="text" id="industryOther" disabled class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-100/50 text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm transition-all">
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
-                                    <label for="orgSize" class="block text-sm font-semibold text-slate-700 mb-1.5">Organization Size</label>
-                                    <select id="orgSize" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="orgSize" class="block text-sm font-semibold text-zinc-700 mb-1.5">Organization Size</label>
+                                    <select id="orgSize" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Small (1-50 employees)">Small (1-50)</option>
                                         <option value="Medium (51-250 employees)">Medium (51-250)</option>
                                         <option value="Large (251-1000 employees)">Large (251-1000)</option>
@@ -180,17 +185,17 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="orgFunctions" class="block text-sm font-semibold text-slate-700 mb-1.5">Key Business Function</label>
-                                    <select id="orgFunctions" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
-                                        <!-- Populated via JS based on Industry -->
+                                    <label for="orgFunctions" class="block text-sm font-semibold text-zinc-700 mb-1.5">Key Business Function</label>
+                                    <select id="orgFunctions" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
+                                        <!-- Populated via JS -->
                                     </select>
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
-                                    <label for="orgSystems" class="block text-sm font-semibold text-slate-700 mb-1.5">Critical Systems</label>
-                                    <select id="orgSystems" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="orgSystems" class="block text-sm font-semibold text-zinc-700 mb-1.5">Critical Systems</label>
+                                    <select id="orgSystems" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Electronic Health Records (EHR)">EHR / Medical Records</option>
                                         <option value="Cloud-native SaaS applications">Cloud/SaaS Apps</option>
                                         <option value="Industrial Control Systems (ICS/SCADA)">ICS / SCADA</option>
@@ -199,8 +204,8 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="orgConstraints" class="block text-sm font-semibold text-slate-700 mb-1.5">Organizational Constraints</label>
-                                    <select id="orgConstraints" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="orgConstraints" class="block text-sm font-semibold text-zinc-700 mb-1.5">Organizational Constraints</label>
+                                    <select id="orgConstraints" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Well-funded / Mature Security">Well-funded / Mature Security</option>
                                         <option value="Understaffed / Burned out team">Understaffed / Burned out team</option>
                                         <option value="Post-Merger (Mismatched systems)">Post-Merger (Mismatched systems)</option>
@@ -211,11 +216,11 @@
                         </div>
 
                         <!-- TAB 2: The Threat -->
-                        <div id="tab-threat" class="tab-pane hidden space-y-5 animate-fadeIn">
+                        <div id="tab-threat" class="tab-pane hidden space-y-6 animate-fadeIn">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                 <div>
-                                    <label for="threatActor" class="block text-sm font-semibold text-slate-700 mb-1.5">Threat Actor / Motivation</label>
-                                    <select id="threatActor" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="threatActor" class="block text-sm font-semibold text-zinc-700 mb-1.5">Threat Actor / Motivation</label>
+                                    <select id="threatActor" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Cybercriminal Syndicate (Financial Gain)">Cybercriminal Syndicate</option>
                                         <option value="Nation-State / APT (Espionage/Theft)">Nation-State / APT</option>
                                         <option value="Malicious Insider (Revenge/Financial)">Malicious Insider</option>
@@ -224,8 +229,8 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="accessVector" class="block text-sm font-semibold text-slate-700 mb-1.5">Initial Access Vector</label>
-                                    <select id="accessVector" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="accessVector" class="block text-sm font-semibold text-zinc-700 mb-1.5">Initial Access Vector</label>
+                                    <select id="accessVector" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Spear-phishing (Malicious link/attachment)">Spear-phishing</option>
                                         <option value="Unpatched Edge Device (VPN/Firewall)">Unpatched Edge Device</option>
                                         <option value="Stolen Credentials (Credential Stuffing)">Stolen Credentials</option>
@@ -235,10 +240,10 @@
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-slate-100 pt-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-zinc-100 pt-6">
                                 <div>
-                                    <label for="threatScenario" class="block text-sm font-semibold text-slate-700 mb-1.5">Scenario Outcome / Action</label>
-                                    <select id="threatScenario" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="threatScenario" class="block text-sm font-semibold text-zinc-700 mb-1.5">Scenario Outcome / Action</label>
+                                    <select id="threatScenario" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Lateral movement to deploy ransomware on critical servers">Deploy ransomware on critical servers</option>
                                         <option value="Silent exfiltration of sensitive database records">Silent exfiltration of database records</option>
                                         <option value="Sabotage and deletion of primary and backup systems">Sabotage and deletion of systems</option>
@@ -247,8 +252,8 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="frameworkAlignment" class="block text-sm font-semibold text-slate-700 mb-1.5">Framework Alignment</label>
-                                    <select id="frameworkAlignment" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="frameworkAlignment" class="block text-sm font-semibold text-zinc-700 mb-1.5">Framework Alignment</label>
+                                    <select id="frameworkAlignment" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="MITRE ATT&CK (Enterprise)">MITRE ATT&CK (Enterprise)</option>
                                         <option value="MITRE ATT&CK (ICS)">MITRE ATT&CK (ICS)</option>
                                         <option value="OWASP Top 10 (Web/API)">OWASP Top 10 (Web/API)</option>
@@ -258,10 +263,10 @@
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-slate-100 pt-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-zinc-100 pt-6">
                                 <div>
-                                    <label for="underlyingWeakness" class="block text-sm font-semibold text-slate-700 mb-1.5">Underlying Weakness</label>
-                                    <select id="underlyingWeakness" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="underlyingWeakness" class="block text-sm font-semibold text-zinc-700 mb-1.5">Underlying Weakness</label>
+                                    <select id="underlyingWeakness" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Missing or bypassed Multi-Factor Authentication (MFA)">Missing/Bypassed MFA</option>
                                         <option value="Unpatched CVE / Zero-Day Vulnerability">Unpatched CVE/Zero-Day</option>
                                         <option value="Misconfigured Cloud Storage / IAM">Misconfigured Cloud/IAM</option>
@@ -270,8 +275,8 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="dwellTime" class="block text-sm font-semibold text-slate-700 mb-1.5">Attack Velocity / Dwell Time</label>
-                                    <select id="dwellTime" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="dwellTime" class="block text-sm font-semibold text-zinc-700 mb-1.5">Attack Velocity / Dwell Time</label>
+                                    <select id="dwellTime" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Smash and Grab (Hours - dense, noisy logs)">Smash and Grab (Hours)</option>
                                         <option value="Low and Slow (Months - sparse, hard to correlate)">Low and Slow (Months)</option>
                                         <option value="Active/Ongoing (Attack is happening right now)">Active/Ongoing</option>
@@ -279,10 +284,10 @@
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-slate-100 pt-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-zinc-100 pt-6">
                                 <div>
-                                    <label for="environment" class="block text-sm font-semibold text-slate-700 mb-1.5">Environment Base Summary</label>
-                                    <select id="environment" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="environment" class="block text-sm font-semibold text-zinc-700 mb-1.5">Environment Base Summary</label>
+                                    <select id="environment" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Hybrid AD, M365, on-prem file servers">Hybrid AD, M365, on-prem file servers</option>
                                         <option value="100% Cloud-native (AWS/GCP), Identity Provider">100% Cloud-native, SSO Provider</option>
                                         <option value="Highly segmented OT/ICS environment">Highly segmented OT/ICS environment</option>
@@ -290,8 +295,8 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="businessImpact" class="block text-sm font-semibold text-slate-700 mb-1.5">Business Impact (The "So What?")</label>
-                                    <select id="businessImpact" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="businessImpact" class="block text-sm font-semibold text-zinc-700 mb-1.5">Business Impact (The "So What?")</label>
+                                    <select id="businessImpact" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Catastrophic Operational Downtime">Catastrophic Operational Downtime</option>
                                         <option value="Regulatory Fine & Compliance Breach (GDPR/HIPAA)">Regulatory Fine (GDPR/HIPAA/SEC)</option>
                                         <option value="Intellectual Property Theft / Competitive Loss">Intellectual Property Theft</option>
@@ -301,33 +306,33 @@
                                 </div>
                             </div>
 
-                            <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+                            <div class="bg-zinc-50 border border-zinc-200 rounded-xl p-5 shadow-sm space-y-4">
                                 <div class="flex justify-between items-end mb-2">
-                                    <label for="narrative" class="block text-sm font-semibold text-slate-700">Narrative Hook (Opening theme)</label>
+                                    <label for="narrative" class="block text-sm font-semibold text-zinc-700">Narrative Hook (Opening theme)</label>
                                 </div>
                                 
                                 <div class="flex flex-wrap gap-2 mb-3">
-                                    <button type="button" class="narrative-starter text-xs font-medium bg-white border border-slate-300 hover:border-indigo-400 hover:text-indigo-600 text-slate-600 px-3 py-1.5 rounded-md shadow-sm transition-colors" data-text="Urgent Alert: You arrive on Monday morning to a flood of user tickets about locked screens and inaccessible files.">Urgent Alert</button>
-                                    <button type="button" class="narrative-starter text-xs font-medium bg-white border border-slate-300 hover:border-indigo-400 hover:text-indigo-600 text-slate-600 px-3 py-1.5 rounded-md shadow-sm transition-colors" data-text="Subtle Anomaly: During a routine log review, your dashboard flags unusual outbound traffic over several weeks.">Subtle Anomaly</button>
-                                    <button type="button" class="narrative-starter text-xs font-medium bg-white border border-slate-300 hover:border-indigo-400 hover:text-indigo-600 text-slate-600 px-3 py-1.5 rounded-md shadow-sm transition-colors" data-text="External Tip: A third-party security partner notifies your team of potential employee credentials for sale on the dark web.">External Tip</button>
-                                    <button type="button" class="narrative-starter text-xs font-medium bg-white border border-slate-300 hover:border-indigo-400 hover:text-indigo-600 text-slate-600 px-3 py-1.5 rounded-md shadow-sm transition-colors" data-text="Compliance Audit: You have 48 hours to piece together evidence of a suspected past breach before regulators arrive.">Compliance Audit</button>
+                                    <button type="button" class="narrative-starter text-xs font-medium bg-white border border-zinc-300 hover:border-indigo-400 hover:text-indigo-600 text-zinc-600 px-3 py-1.5 rounded-md shadow-sm transition-colors" data-text="Urgent Alert: You arrive on Monday morning to a flood of user tickets about locked screens and inaccessible files.">Urgent Alert</button>
+                                    <button type="button" class="narrative-starter text-xs font-medium bg-white border border-zinc-300 hover:border-indigo-400 hover:text-indigo-600 text-zinc-600 px-3 py-1.5 rounded-md shadow-sm transition-colors" data-text="Subtle Anomaly: During a routine log review, your dashboard flags unusual outbound traffic over several weeks.">Subtle Anomaly</button>
+                                    <button type="button" class="narrative-starter text-xs font-medium bg-white border border-zinc-300 hover:border-indigo-400 hover:text-indigo-600 text-zinc-600 px-3 py-1.5 rounded-md shadow-sm transition-colors" data-text="External Tip: A third-party security partner notifies your team of potential employee credentials for sale on the dark web.">External Tip</button>
+                                    <button type="button" class="narrative-starter text-xs font-medium bg-white border border-zinc-300 hover:border-indigo-400 hover:text-indigo-600 text-zinc-600 px-3 py-1.5 rounded-md shadow-sm transition-colors" data-text="Compliance Audit: You have 48 hours to piece together evidence of a suspected past breach before regulators arrive.">Compliance Audit</button>
                                 </div>
                                 
-                                <textarea id="narrative" rows="3" class="w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm resize-y" placeholder="Describe the opening scene or starting point for the student...">Urgent Alert: You arrive on Monday morning to a flood of user tickets about locked screens and inaccessible files.</textarea>
+                                <textarea id="narrative" rows="3" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-white text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm resize-y transition-all" placeholder="Describe the opening scene or starting point for the student...">Urgent Alert: You arrive on Monday morning to a flood of user tickets about locked screens and inaccessible files.</textarea>
                             </div>
                         </div>
 
                         <!-- TAB 3: Evidence & Artifacts -->
-                        <div id="tab-evidence" class="tab-pane hidden space-y-5 animate-fadeIn">
+                        <div id="tab-evidence" class="tab-pane hidden space-y-6 animate-fadeIn">
                             <div>
-                                <p class="text-sm text-slate-500 mb-4">Select the specific artifacts the AI should generate as evidence in the interactive tool. Ensure your selections align with the Initial Access Vector chosen.</p>
+                                <p class="text-sm text-zinc-500 mb-5">Select the specific artifacts the AI should generate as evidence. Ensure selections align with the Initial Access Vector.</p>
                                 
                                 <!-- Tooling Environment -->
-                                <div class="mb-5 p-4 bg-slate-50 border border-slate-200 rounded-xl grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div class="mb-6 p-5 bg-zinc-50 border border-zinc-200 rounded-xl grid grid-cols-1 sm:grid-cols-2 gap-5">
                                     <div>
-                                        <label for="toolingEnv" class="block text-sm font-semibold text-slate-700 mb-1.5">Defensive Tooling Environment</label>
-                                        <p class="text-xs text-slate-500 mb-2">Forces the AI to format technical logs to match specific vendor outputs.</p>
-                                        <select id="toolingEnv" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <label for="toolingEnv" class="block text-sm font-semibold text-zinc-700 mb-1.5">Defensive Tooling Environment</label>
+                                        <p class="text-xs text-zinc-500 mb-2">Forces technical logs to match vendor outputs.</p>
+                                        <select id="toolingEnv" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-white text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                             <option value="Vendor Neutral / Generic Log Formats">Vendor Neutral / Generic Logs</option>
                                             <option value="Splunk SIEM + CrowdStrike Falcon EDR">Splunk + CrowdStrike</option>
                                             <option value="Microsoft Sentinel + Defender XDR">Microsoft Sentinel + Defender</option>
@@ -335,9 +340,9 @@
                                         </select>
                                     </div>
                                     <div>
-                                        <label for="logDensity" class="block text-sm font-semibold text-slate-700 mb-1.5">Log Density / Noise Level</label>
-                                        <p class="text-xs text-slate-500 mb-2">Controls the ratio of malicious indicators to benign traffic.</p>
-                                        <select id="logDensity" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <label for="logDensity" class="block text-sm font-semibold text-zinc-700 mb-1.5">Log Density / Noise Level</label>
+                                        <p class="text-xs text-zinc-500 mb-2">Controls ratio of malicious to benign traffic.</p>
+                                        <select id="logDensity" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-white text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                             <option value="Sterile (Only relevant events)">Sterile (Only relevant events)</option>
                                             <option value="Realistic (Mixed with benign traffic)" selected>Realistic (Mixed with benign traffic)</option>
                                             <option value="Overwhelming (Massive log dumps with false positives)">Overwhelming (Massive dumps / false positives)</option>
@@ -347,104 +352,104 @@
 
                                 <!-- Network & Infrastructure -->
                                 <div class="mb-5">
-                                    <div class="flex items-center justify-between mb-2 border-b border-slate-100 pb-1">
-                                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Network & Infrastructure</h4>
+                                    <div class="flex items-center justify-between mb-3 border-b border-zinc-100 pb-1.5">
+                                        <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Network & Infrastructure</h4>
                                         <button type="button" class="text-[10px] font-semibold text-indigo-500 hover:text-indigo-700 select-all-btn" data-target="artifacts-network">Select All</button>
                                     </div>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="artifacts-network">
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="PCAP Summaries" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" checked>
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">PCAP Summaries</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="PCAP Summaries" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500" checked>
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">PCAP Summaries</span>
                                         </label>
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="Firewall Logs" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" checked>
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Firewall Logs</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="Firewall Logs" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500" checked>
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">Firewall Logs</span>
                                         </label>
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="Proxy/DNS Logs" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Proxy/DNS Logs</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="Proxy/DNS Logs" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500">
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">Proxy/DNS Logs</span>
                                         </label>
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="Threat Intel / OSINT Reports" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Threat Intel / OSINT</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="Threat Intel / OSINT Reports" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500">
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">Threat Intel / OSINT</span>
                                         </label>
                                     </div>
                                 </div>
 
                                 <!-- Endpoint -->
                                 <div class="mb-5">
-                                    <div class="flex items-center justify-between mb-2 border-b border-slate-100 pb-1">
-                                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Endpoint</h4>
+                                    <div class="flex items-center justify-between mb-3 border-b border-zinc-100 pb-1.5">
+                                        <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Endpoint</h4>
                                         <button type="button" class="text-[10px] font-semibold text-indigo-500 hover:text-indigo-700 select-all-btn" data-target="artifacts-endpoint">Select All</button>
                                     </div>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="artifacts-endpoint">
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="Windows Event Logs (4624, 4688)" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" checked>
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Windows Event Logs</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="Windows Event Logs (4624, 4688)" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500" checked>
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">Windows Event Logs</span>
                                         </label>
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="Sysmon Process Trees" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Sysmon Outputs</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="Sysmon Process Trees" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500">
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">Sysmon Outputs</span>
                                         </label>
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="EDR Console Alerts" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" checked>
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">EDR Alerts</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="EDR Console Alerts" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500" checked>
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">EDR Alerts</span>
                                         </label>
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="Memory Dump Analysis" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Memory Dump Analysis</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="Memory Dump Analysis" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500">
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">Memory Dump Analysis</span>
                                         </label>
                                     </div>
                                 </div>
 
                                 <!-- Cloud & App -->
                                 <div class="mb-5">
-                                    <div class="flex items-center justify-between mb-2 border-b border-slate-100 pb-1">
-                                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Cloud & Application</h4>
+                                    <div class="flex items-center justify-between mb-3 border-b border-zinc-100 pb-1.5">
+                                        <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Cloud & Application</h4>
                                         <button type="button" class="text-[10px] font-semibold text-indigo-500 hover:text-indigo-700 select-all-btn" data-target="artifacts-cloud">Select All</button>
                                     </div>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="artifacts-cloud">
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="AWS CloudTrail / GCP Audit Logs" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Cloud Platform Logs</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="AWS CloudTrail / GCP Audit Logs" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500">
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">Cloud Platform Logs</span>
                                         </label>
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="Azure AD Sign-in Logs" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Identity/SSO Logs</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="Azure AD Sign-in Logs" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500">
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">Identity/SSO Logs</span>
                                         </label>
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="Web Server Access Logs" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Web Server Logs</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="Web Server Access Logs" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500">
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">Web Server Logs</span>
                                         </label>
                                     </div>
                                 </div>
 
                                 <!-- Business & Human -->
                                 <div>
-                                    <div class="flex items-center justify-between mb-2 border-b border-slate-100 pb-1">
-                                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Business & Human</h4>
+                                    <div class="flex items-center justify-between mb-3 border-b border-zinc-100 pb-1.5">
+                                        <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Business & Human</h4>
                                         <button type="button" class="text-[10px] font-semibold text-indigo-500 hover:text-indigo-700 select-all-btn" data-target="artifacts-business">Select All</button>
                                     </div>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="artifacts-business">
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="Phishing Email Original Headers" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" checked>
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Phishing Headers</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="Phishing Email Original Headers" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500" checked>
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">Phishing Headers</span>
                                         </label>
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="Internal Teams/Slack Chats" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" checked>
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Internal Chat Logs</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="Internal Teams/Slack Chats" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500" checked>
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">Internal Chat Logs</span>
                                         </label>
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="User Interview Transcripts" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">User Interviews</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="User Interview Transcripts" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500">
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">User Interviews</span>
                                         </label>
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="HR Termination Notices / Memos" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">HR Records</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="HR Termination Notices / Memos" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500">
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">HR Records</span>
                                         </label>
-                                        <label class="flex items-center p-2.5 border border-slate-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white">
-                                            <input type="checkbox" name="artifacts" value="Physical Security Logs (Badge/CCTV)" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500">
-                                            <span class="ml-2.5 text-sm font-medium text-slate-700">Physical Security</span>
+                                        <label class="flex items-center p-3 border border-zinc-200 rounded-lg cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition-colors bg-white shadow-sm">
+                                            <input type="checkbox" name="artifacts" value="Physical Security Logs (Badge/CCTV)" class="w-4 h-4 text-indigo-600 rounded border-zinc-300 focus:ring-indigo-500">
+                                            <span class="ml-3 text-sm font-medium text-zinc-700">Physical Security</span>
                                         </label>
                                     </div>
                                 </div>
@@ -452,11 +457,35 @@
                         </div>
 
                         <!-- TAB 4: Pedagogy -->
-                        <div id="tab-pedagogy" class="tab-pane hidden space-y-5 animate-fadeIn">
+                        <div id="tab-pedagogy" class="tab-pane hidden space-y-6 animate-fadeIn">
+                            
+                            <!-- New: Formative Learning Settings -->
+                            <div class="bg-indigo-50/50 p-5 rounded-xl border border-indigo-100 mb-6">
+                                <h4 class="text-xs font-bold text-indigo-800 uppercase tracking-wider mb-4">Formative Learning Experience</h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label for="scaffolding" class="block text-sm font-semibold text-zinc-700 mb-1.5">Instructional Scaffolding (Hints)</label>
+                                        <select id="scaffolding" class="w-full border border-indigo-200 rounded-lg shadow-sm py-2.5 px-3 bg-white text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
+                                            <option value="Guided (Questions include heavy hints and point to specific logs)">Guided (Heavy hints)</option>
+                                            <option value="Standard (Questions are open-ended but fair)" selected>Standard (Fair)</option>
+                                            <option value="Hostile/Time-Pressured (No hints, deliberately vague demands)">Hostile/Time-Pressured (No hints)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="bloomsObjective" class="block text-sm font-semibold text-zinc-700 mb-1.5">Primary Bloom's Objective</label>
+                                        <select id="bloomsObjective" class="w-full border border-indigo-200 rounded-lg shadow-sm py-2.5 px-3 bg-white text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
+                                            <option value="Identify & Classify (Focus on finding IOCs)">Identify & Classify (Finding IOCs)</option>
+                                            <option value="Analyze & Correlate (Focus on connecting events)" selected>Analyze & Correlate (Connecting events)</option>
+                                            <option value="Evaluate & Strategize (Focus on policy/response)">Evaluate & Strategize (Policy/Response)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
                                 <div>
-                                    <label for="studentRole" class="block text-sm font-semibold text-slate-700 mb-1.5">Student Role / Perspective</label>
-                                    <select id="studentRole" class="w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="studentRole" class="block text-sm font-semibold text-zinc-700 mb-1.5">Student Role / Perspective</label>
+                                    <select id="studentRole" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Tier 1 SOC Analyst (Triage)">Tier 1 SOC Analyst (Triage)</option>
                                         <option value="Incident Response Lead (Containment)">Incident Response Lead (Containment)</option>
                                         <option value="Threat Hunter (Proactive Search)">Threat Hunter (Proactive Search)</option>
@@ -465,8 +494,8 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="deliverableType" class="block text-sm font-semibold text-slate-700 mb-1.5">Final Capstone Deliverable</label>
-                                    <select id="deliverableType" class="w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="deliverableType" class="block text-sm font-semibold text-zinc-700 mb-1.5">Final Capstone Deliverable</label>
+                                    <select id="deliverableType" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Executive Briefing (1-pager non-technical)">Executive Briefing (1-pager non-technical)</option>
                                         <option value="Root Cause Analysis (Technical details)">Root Cause Analysis (Technical details)</option>
                                         <option value="Incident Timeline / Playbook Review">Incident Timeline / Playbook Review</option>
@@ -475,8 +504,8 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="gradingRubric" class="block text-sm font-semibold text-slate-700 mb-1.5">Assessment Focus (Rubric)</label>
-                                    <select id="gradingRubric" class="w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                    <label for="gradingRubric" class="block text-sm font-semibold text-zinc-700 mb-1.5">Assessment Focus (Rubric)</label>
+                                    <select id="gradingRubric" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer transition-all">
                                         <option value="Technical Accuracy & Log Correlation">Technical Accuracy & Log Correlation</option>
                                         <option value="Executive Communication & Business Impact">Executive Communication & Business Impact</option>
                                         <option value="Process Adherence & Playbook Knowledge">Process Adherence & Playbook Knowledge</option>
@@ -485,28 +514,28 @@
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 border-t border-slate-100 pt-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 border-t border-zinc-100 pt-6">
                                 <div>
-                                    <label for="difficulty" class="block text-sm font-semibold text-slate-700 mb-1.5">Difficulty</label>
-                                    <select id="difficulty" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none sm:text-sm cursor-pointer">
+                                    <label for="difficulty" class="block text-sm font-semibold text-zinc-700 mb-1.5">Difficulty</label>
+                                    <select id="difficulty" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none sm:text-sm cursor-pointer transition-all">
                                         <option value="Intro">Intro</option>
-                                        <option value="Intermediate">Intermediate</option>
+                                        <option value="Intermediate" selected>Intermediate</option>
                                         <option value="Advanced">Advanced</option>
                                     </select>
-                                    <p id="difficultyHelper" class="mt-2 text-[11px] leading-snug text-slate-500 font-medium"></p>
+                                    <p id="difficultyHelper" class="mt-2 text-[11px] leading-snug text-zinc-500 font-medium"></p>
                                 </div>
                                 <div>
-                                    <label for="richness" class="block text-sm font-semibold text-slate-700 mb-1.5">Richness</label>
-                                    <select id="richness" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none sm:text-sm cursor-pointer">
+                                    <label for="richness" class="block text-sm font-semibold text-zinc-700 mb-1.5">Richness</label>
+                                    <select id="richness" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none sm:text-sm cursor-pointer transition-all">
                                         <option value="Lite">Lite</option>
                                         <option value="Standard" selected>Standard</option>
                                         <option value="Deep‑dive">Deep‑dive</option>
                                     </select>
-                                    <p id="richnessHelper" class="mt-2 text-[11px] leading-snug text-slate-500 font-medium"></p>
+                                    <p id="richnessHelper" class="mt-2 text-[11px] leading-snug text-zinc-500 font-medium"></p>
                                 </div>
                                 <div>
-                                    <label for="distractors" class="block text-sm font-semibold text-slate-700 mb-1.5">Red Herrings</label>
-                                    <select id="distractors" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none sm:text-sm cursor-pointer">
+                                    <label for="distractors" class="block text-sm font-semibold text-zinc-700 mb-1.5">Red Herrings</label>
+                                    <select id="distractors" class="w-full border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none sm:text-sm cursor-pointer transition-all">
                                         <option value="None (Straightforward path)">None (Straightforward)</option>
                                         <option value="Low (1-2 unrelated routine alerts)">Low (1-2 routine alerts)</option>
                                         <option value="High (Simultaneous benign IT outage masking attack)">High (Simultaneous outage)</option>
@@ -515,11 +544,11 @@
                             </div>
                             
                             <div class="mt-2">
-                                <label for="seatTime" class="block text-sm font-semibold text-slate-700 mb-1.5">Seat time</label>
-                                <select id="seatTime" class="w-1/3 border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none sm:text-sm cursor-pointer">
+                                <label for="seatTime" class="block text-sm font-semibold text-zinc-700 mb-1.5">Seat time</label>
+                                <select id="seatTime" class="w-full sm:w-1/3 border border-zinc-300 rounded-lg shadow-sm py-2.5 px-3 bg-zinc-50 text-zinc-800 focus:outline-none sm:text-sm cursor-pointer transition-all">
                                     <option value="15 minutes">15 minutes</option>
                                     <option value="30 minutes">30 minutes</option>
-                                    <option value="60 minutes">60 minutes</option>
+                                    <option value="60 minutes" selected>60 minutes</option>
                                     <option value="90 minutes">90 minutes</option>
                                     <option value="2 hours">2 hours</option>
                                 </select>
@@ -527,8 +556,8 @@
                         </div>
                     </div>
 
-                    <div class="pt-6 flex gap-4 border-t border-slate-100 mt-6">
-                        <button type="button" id="clearBtn" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold py-2 px-4 rounded-xl shadow-sm transition-all duration-200">
+                    <div class="pt-8 flex justify-end border-t border-zinc-100">
+                        <button type="button" id="clearBtn" class="text-sm bg-white border border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900 text-zinc-600 font-semibold py-2.5 px-5 rounded-xl shadow-sm transition-all duration-200">
                             Reset Defaults
                         </button>
                     </div>
@@ -536,34 +565,35 @@
             </div>
 
             <!-- RIGHT COLUMN: Output Card -->
-            <div class="bg-[#0f172a] rounded-2xl shadow-2xl shadow-slate-900/50 border border-slate-700 flex-1 w-full xl:w-7/12 flex flex-col h-[calc(100vh-8rem)] sticky top-24 overflow-hidden">
+            <div id="outputCard" class="bg-zinc-900 rounded-2xl shadow-2xl flex-1 w-full lg:w-7/12 flex flex-col h-fit transition-all duration-500 border border-zinc-800">
                 
-                <div class="flex justify-between items-center px-4 pt-4 pb-4 border-b border-slate-700/50 bg-[#0f172a] z-10">
-                    <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-rose-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-amber-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
-                        <h2 class="text-sm font-semibold text-slate-300 ml-3 tracking-wide">Generated Prompt String</h2>
-                    </div>
+                <div class="flex justify-between items-center px-6 py-4 border-b border-zinc-800 sticky top-0 bg-zinc-900 rounded-t-2xl z-20">
                     <div class="flex items-center gap-3">
-                        <span id="copyStatus" class="text-sm font-medium text-emerald-400 opacity-0 transition-opacity duration-300 bg-emerald-400/10 px-2 py-0.5 rounded">Copied!</span>
-                        <button type="button" id="copyBtn" class="text-sm bg-indigo-500 hover:bg-indigo-400 text-white font-medium py-1.5 px-4 rounded-lg shadow-sm transition-colors duration-200 flex items-center gap-2">
+                        <div class="flex gap-1.5">
+                            <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                        </div>
+                        <h2 class="text-lg font-bold text-white font-serif tracking-wide ml-2">Generated Prompt</h2>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span id="copyStatus" class="text-xs font-bold uppercase tracking-widest text-emerald-400 opacity-0 transition-opacity duration-300 bg-emerald-400/10 px-3 py-1 rounded-md">Copied!</span>
+                        <button type="button" id="copyBtn" class="text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2.5 rounded-lg uppercase tracking-wider shadow-md shadow-indigo-900/50 transition-all duration-200 flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                             Copy Code
                         </button>
                     </div>
                 </div>
                 
-                <!-- NEW: Scenario Sanity Check Panel -->
-                <div class="px-5 py-3.5 border-b border-slate-700/50 bg-slate-800/40 shrink-0">
-                    <h3 class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><path d="M2 12h4l3-9 5 18 3-9h5"/></svg>
+                <div class="px-6 py-4 border-b border-zinc-800/50 bg-zinc-950/40 shrink-0">
+                    <h3 class="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><path d="M2 12h4l3-9 5 18 3-9h5"/></svg>
                         Scenario Sanity Check
                     </h3>
-                    <p id="scenarioSummary" class="text-[13px] text-slate-300 leading-relaxed"></p>
+                    <p id="scenarioSummary" class="text-[13.5px] text-zinc-300 leading-relaxed font-medium"></p>
                 </div>
                 
-                <textarea id="promptOutput" readonly class="w-full flex-1 bg-transparent border-0 py-5 px-6 text-slate-300 font-mono text-[13px] leading-relaxed resize-none focus:outline-none focus:ring-0"></textarea>
+                <textarea id="promptOutput" readonly class="w-full p-6 lg:p-8 bg-transparent border-0 text-zinc-300 prompt-textarea text-[13px] leading-relaxed resize-none focus:outline-none focus:ring-0 overflow-hidden min-h-[500px]"></textarea>
             </div>
             
         </div>
@@ -590,10 +620,13 @@
             const dwellTime = document.getElementById('dwellTime');
             const environment = document.getElementById('environment');
             const businessImpact = document.getElementById('businessImpact');
-            const toolingEnv = document.getElementById('toolingEnv');
-            const logDensity = document.getElementById('logDensity');
             const narrative = document.getElementById('narrative');
             
+            const toolingEnv = document.getElementById('toolingEnv');
+            const logDensity = document.getElementById('logDensity');
+
+            const scaffolding = document.getElementById('scaffolding');
+            const bloomsObjective = document.getElementById('bloomsObjective');
             const studentRole = document.getElementById('studentRole');
             const deliverableType = document.getElementById('deliverableType');
             const gradingRubric = document.getElementById('gradingRubric');
@@ -611,6 +644,7 @@
             const promptOutput = document.getElementById('promptOutput');
             const copyBtn = document.getElementById('copyBtn');
             const copyStatus = document.getElementById('copyStatus');
+            const outputCard = document.getElementById('outputCard');
             const llmBtns = document.querySelectorAll('.llm-btn');
             const templateBtns = document.querySelectorAll('.template-btn');
             const narrativeStarters = document.querySelectorAll('.narrative-starter');
@@ -638,7 +672,7 @@
                     "Advanced": "Subtle clues, complex log parsing, and strategic decision making."
                 },
                 richness: {
-                    "Lite": "Shorter logs, minimal reading, faster time-to-completion.",
+                    "Lite": "Shorter logs, minimal reading, faster completion.",
                     "Standard": "Balanced mix of technical logs and business context.",
                     "Deep‑dive": "Extensive, highly-detailed artifacts with verbose metadata."
                 }
@@ -672,77 +706,66 @@
                     if (industrySelect.value === 'Other') {
                         if (industryOther) {
                             industryOther.disabled = false;
-                            industryOther.classList.remove('bg-slate-100/50', 'text-slate-400');
-                            industryOther.classList.add('bg-white', 'text-slate-800');
+                            industryOther.classList.remove('bg-zinc-100/50', 'text-zinc-400');
+                            industryOther.classList.add('bg-white', 'text-zinc-800');
                             industryOther.focus();
                         }
                         if (industryOtherLabel) {
-                            industryOtherLabel.classList.remove('text-slate-400');
-                            industryOtherLabel.classList.add('text-slate-700');
+                            industryOtherLabel.classList.remove('text-zinc-400');
+                            industryOtherLabel.classList.add('text-zinc-700');
                         }
                     } else {
                         if (industryOther) {
                             industryOther.disabled = true;
                             industryOther.value = '';
-                            industryOther.classList.add('bg-slate-100/50', 'text-slate-400');
-                            industryOther.classList.remove('bg-white', 'text-slate-800');
+                            industryOther.classList.add('bg-zinc-100/50', 'text-zinc-400');
+                            industryOther.classList.remove('bg-white', 'text-zinc-800');
                         }
                         if (industryOtherLabel) {
-                            industryOtherLabel.classList.add('text-slate-400');
-                            industryOtherLabel.classList.remove('text-slate-700');
+                            industryOtherLabel.classList.add('text-zinc-400');
+                            industryOtherLabel.classList.remove('text-zinc-700');
                         }
                     }
                     updateBusinessFunctions();
                 });
             }
 
-            // Tab Switching Logic
             tabBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     tabBtns.forEach(b => {
-                        b.classList.remove('active', 'border-indigo-600', 'text-indigo-600');
-                        b.classList.add('border-transparent', 'text-slate-500');
+                        b.classList.remove('active-tab', 'text-zinc-800');
+                        b.classList.add('border-transparent');
                     });
                     tabPanes.forEach(p => p.classList.add('hidden'));
 
-                    btn.classList.add('active', 'border-indigo-600', 'text-indigo-600');
-                    btn.classList.remove('border-transparent', 'text-slate-500');
+                    btn.classList.add('active-tab', 'text-zinc-800');
+                    btn.classList.remove('border-transparent');
                     const targetId = btn.dataset.target;
                     const targetEl = document.getElementById(targetId);
                     if (targetEl) targetEl.classList.remove('hidden');
                 });
             });
 
-            // LLM Button Logic
             llmBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     llmBtns.forEach(b => {
-                        b.className = 'llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-white text-slate-600 font-semibold text-sm hover:border-indigo-300 hover:text-indigo-600 transition-all duration-200';
+                        b.className = 'llm-btn flex items-center justify-center py-3 rounded-xl border-2 border-zinc-200 bg-white text-zinc-600 font-semibold text-sm hover:border-indigo-400 transition-all';
                     });
-                    btn.className = 'llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-indigo-600 bg-indigo-600 text-white font-semibold text-sm shadow-sm transition-all duration-200';
+                    btn.className = 'llm-btn flex items-center justify-center py-3 rounded-xl border-2 border-indigo-600 bg-indigo-600 text-white font-semibold text-sm shadow-md transition-all';
                     currentLLM = btn.dataset.llm;
                     buildPrompt();
                 });
             });
 
-            // Select All Logic for Artifacts
             selectAllBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const targetId = btn.dataset.target;
                     const container = document.getElementById(targetId);
                     if (container) {
                         const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-                        // Check if all are currently checked
                         const allChecked = Array.from(checkboxes).every(cb => cb.checked);
-                        
-                        // Toggle them all
-                        checkboxes.forEach(cb => {
-                            cb.checked = !allChecked;
-                        });
-                        
-                        // Update button text
+                        checkboxes.forEach(cb => { cb.checked = !allChecked; });
                         btn.textContent = allChecked ? "Select All" : "Clear All";
-                        
                         buildPrompt();
                     }
                 });
@@ -751,16 +774,17 @@
             function buildPrompt() {
                 if (!promptOutput) return;
 
+                // Organization variables
                 const finalIndustry = (industrySelect && industrySelect.value === 'Other') 
                     ? (industryOther && industryOther.value.trim() ? industryOther.value.trim() : 'Unspecified Industry')
                     : (industrySelect ? industrySelect.value : '');
-
                 const os = orgSize ? orgSize.value : '';
                 const of = orgFunctions ? orgFunctions.value : '';
                 const osy = orgSystems ? orgSystems.value : '';
                 const oc = orgConstraints ? orgConstraints.value : '';
                 const constructedOrgOverview = `Size: ${os}. Key Business Functions: ${of}. Critical Systems: ${osy}. Organizational Constraints: ${oc}.`;
                 
+                // Threat variables
                 const ta = threatActor ? threatActor.value : '';
                 const av = accessVector ? accessVector.value : '';
                 const uw = underlyingWeakness ? underlyingWeakness.value : '';
@@ -769,18 +793,17 @@
                 const fa = frameworkAlignment ? frameworkAlignment.value : '';
                 const constructedThreat = `Actor: ${ta}. Initial Access: ${av}. Underlying Weakness: ${uw}. Velocity/Dwell Time: ${dt}. Action/Goal: ${ts}. Framework Alignment: ${fa}.`;
 
+                // Artifacts variables
                 const selectedArtifactsArray = Array.from(document.querySelectorAll('input[name="artifacts"]:checked')).map(cb => cb.value);
                 const selectedArtifacts = selectedArtifactsArray.length > 0 ? selectedArtifactsArray.join(', ') : 'Standard mix of policy, technical, and business artifacts';
-
-                const cl = courseLevel ? courseLevel.value : '';
-                const lp = learnerProfile ? learnerProfile.value : '';
-                const ind = finalIndustry;
-                const oo = constructedOrgOverview;
-                const tm = constructedThreat;
-                const env = environment ? environment.value : '';
-                const bi = businessImpact ? businessImpact.value : '';
                 const te = toolingEnv ? toolingEnv.value : '';
                 const ld = logDensity ? logDensity.value : '';
+
+                // Pedagogy & Story variables
+                const cl = courseLevel ? courseLevel.value : '';
+                const lp = learnerProfile ? learnerProfile.value : '';
+                const env = environment ? environment.value : '';
+                const bi = businessImpact ? businessImpact.value : '';
                 const diff = difficulty ? difficulty.value : '';
                 const st = seatTime ? seatTime.value : '';
                 const nar = narrative ? narrative.value : '';
@@ -789,9 +812,15 @@
                 const rubric = gradingRubric ? gradingRubric.value : '';
                 const dist = distractors ? distractors.value : '';
                 const rich = richness ? richness.value : '';
+                const scaff = scaffolding ? scaffolding.value : '';
+                const blooms = bloomsObjective ? bloomsObjective.value : '';
 
+                // Update Sanity Check
                 if (scenarioSummary) {
-                    scenarioSummary.innerHTML = `You are generating an <span class="text-indigo-300 font-medium">${diff}</span> scenario for <span class="text-indigo-300 font-medium">${cl}</span> learners. The student will act as a <span class="text-indigo-300 font-medium">${role}</span> responding to a <span class="text-indigo-300 font-medium">${ta.split('(')[0].trim()}</span> who uses <span class="text-indigo-300 font-medium">${av.split('(')[0].trim().toLowerCase()}</span> to <span class="text-indigo-300 font-medium">${ts.toLowerCase()}</span>. The interactive concludes with a <span class="text-indigo-300 font-medium">${deliv.split('(')[0].trim()}</span>.`;
+                    const cleanTa = ta.split('(')[0].trim();
+                    const cleanAv = av.split('(')[0].trim().toLowerCase();
+                    const cleanDeliv = deliv.split('(')[0].trim();
+                    scenarioSummary.innerHTML = `You are building a <span class="text-indigo-300 font-medium">${diff}</span> scenario for <span class="text-indigo-300 font-medium">${cl}</span> learners. The student will act as a <span class="text-indigo-300 font-medium">${role}</span> responding to a <span class="text-indigo-300 font-medium">${cleanTa}</span> who uses <span class="text-indigo-300 font-medium">${cleanAv}</span> to <span class="text-indigo-300 font-medium">${ts.toLowerCase()}</span>. The interactive assesses the ability to <span class="text-indigo-300 font-medium">${blooms.split('(')[0].trim()}</span> and concludes with a <span class="text-indigo-300 font-medium">${cleanDeliv}</span>.`;
                 }
 
                 let template = '';
@@ -815,10 +844,10 @@ Build a self-contained, single-page web interactive using a modern "Dashboard" o
 Course level: ${cl}
 Learner profile: ${lp}
 Student Role: ${role}
-Industry: ${ind}
-Organization details: ${oo}
+Industry: ${finalIndustry}
+Organization details: ${constructedOrgOverview}
 
-Threat mechanics: ${tm}
+Threat mechanics: ${constructedThreat}
 Environment summary: ${env}
 Business Impact (Stakes): ${bi}
 Defensive Tooling Format: ${te}
@@ -829,6 +858,8 @@ Pedagogy:
 - Richness/Depth: ${rich}
 - Seat time target: ${st}
 - Distractors/Red Herrings: ${dist}
+- Instructional Scaffolding: ${scaff}
+- Bloom's Objective: ${blooms}
 - Final Deliverable: ${deliv}
 - Grading Focus: ${rubric}
 </case_context>
@@ -856,13 +887,16 @@ Create a single‑page interactive with these major areas, using a card‑based 
 
 3. Questions card group
    - A card labeled "Analysis Questions" that reveals a list of 6–8 open‑ended questions (Q1–Q8).
+   - Questions must align with the Bloom's objective: [ ${blooms} ].
+   - Apply this level of scaffolding/hints: [ ${scaff} ].
    - Each question explicitly references at least one artifact ID.
    - Under each question, add a collapsed "Instructor Notes" area that expands on click.
 
 4. Decision Points card group
    - A card labeled "Decisions" that reveals 2–3 decision blocks.
-   - Each decision block shows a scenario, three option buttons (A/B/C), and reveals consequence text directly below when clicked.
-   - CRITICAL: Decision options must include one clearly correct action, one plausible but sub-optimal action (e.g., causes unnecessary downtime), and one detrimental action (e.g., alerts the attacker). The consequence text must explain *why* the choice was right or wrong.
+   - Each decision block shows a scenario and three option buttons (A/B/C).
+   - CRITICAL: Decision options must include one clearly correct action, one plausible but sub-optimal action (e.g., causes unnecessary downtime), and one detrimental action (e.g., alerts the attacker).
+   - When clicked, reveal consequence text directly below. The consequence text MUST explain *why* the choice was right or wrong.
 
 5. Capstone / Wrap‑up card
    - A card labeled "Capstone Assignment" that reveals the assignment description for a [ ${deliv} ] and a large <textarea> for responses.
@@ -893,9 +927,9 @@ Build a self-contained, single-page web interactive using a modern "Dashboard" o
 * **Course level:** ${cl}
 * **Learner profile:** ${lp}
 * **Student Role:** ${role}
-* **Industry:** ${ind}
-* **Organization details:** ${oo}
-* **Threat mechanics:** ${tm}
+* **Industry:** ${finalIndustry}
+* **Organization details:** ${constructedOrgOverview}
+* **Threat mechanics:** ${constructedThreat}
 * **Environment summary:** ${env}
 * **Business Impact (Stakes):** ${bi}
 * **Defensive Tooling Format:** ${te}
@@ -903,6 +937,8 @@ Build a self-contained, single-page web interactive using a modern "Dashboard" o
 * **Difficulty:** ${diff} (Distractors: ${dist})
 * **Richness/Depth:** ${rich}
 * **Seat time target:** ${st}
+* **Instructional Scaffolding:** ${scaff}
+* **Bloom's Objective:** ${blooms}
 * **Final Deliverable:** ${deliv}
 * **Grading Focus:** ${rubric}
 
@@ -915,7 +951,7 @@ ${nar}
    - CRITICAL: You MUST generate content for these specific requested artifacts: [ ${selectedArtifacts} ].
    - Format logs to match [ ${te} ] and apply the specified Log Density: [ ${ld} ]. Include distractors based on the parameter above.
    - Clicking updates a detail pane on the same page. 
-3. **Questions card group:** 6-8 open-ended questions referencing artifacts. Include collapsed "Instructor Notes" under each.
+3. **Questions card group:** 6-8 questions referencing artifacts, aligned to Bloom's Objective: [ ${blooms} ]. Apply Scaffolding: [ ${scaff} ]. Include collapsed "Instructor Notes" under each.
 4. **Decision Points card group:** 2-3 decision blocks with A/B/C options revealing consequence text without page reload. Options MUST include: 1 correct, 1 plausible but sub-optimal, and 1 detrimental action. Consequence text must explain *why* it was right/wrong.
 5. **Capstone card:** Assignment description for [ ${deliv} ] and a <textarea>. Include a short bulleted grading rubric evaluating [ ${rubric} ].
 
@@ -923,16 +959,15 @@ ${nar}
 1. **Layout:** Use a CSS Grid or Flexbox layout.
 2. **State Management:** The page must operate as a Single Page Application (SPA) using vanilla JavaScript. Update central panels without reloading.
 3. **Aesthetic:** Clean, neutral styling with responsive behavior. Use a light background, white cards, subtle shadows, rounded corners, sans-serif font.
-4. **Code Structure:** The output must be exactly ONE file.
+4. **Code Structure:** The output must be exactly ONE file. Inline CSS/JS.
 
 ## PEDAGOGICAL CONSTRAINTS
 * Match complexity to ${cl}. Explain jargon.
-* Use all artifacts at least once. Realism suited for ${ind}.
+* Use all artifacts at least once. Realism suited for ${finalIndustry}.
 
 ## STRICT OUTPUT REQUIREMENTS
 * CRITICAL: Return EXACTLY ONE complete HTML5 document.
 * CRITICAL: Do NOT wrap the HTML in markdown code blocks (e.g., do not use \`\`\`html ... \`\`\`). Output the raw HTML directly so it can be immediately copied and run.
-* Put CSS in <style> and JS in <script> inside the file. No external dependencies except fonts/icons.
 * Zero conversational filler. Start your response directly with <!DOCTYPE html>.`;
                 } else {
                     // Default / ChatGPT optimized
@@ -944,7 +979,7 @@ Build a self-contained, single-page web interactive using a modern "Dashboard" o
 Architecture & UI/UX Rules:
 1. Layout: Use a CSS Grid or Flexbox layout. The screen should feature a main navigation area (clickable cards or a sidebar) and a large central "Display Panel."
 2. State Management (No Reloads): The page must operate as a Single Page Application (SPA) using vanilla JavaScript. When a student clicks an artifact, question, or decision card, dynamically update the central Display Panel with that specific content.
-3. Aesthetic: Design a clean, premium interface. Use a modern sans-serif font (e.g., Inter or Roboto), a light slate/gray background, and stark white content cards with subtle drop shadows and rounded corners. 
+3. Aesthetic: Design a clean, premium interface. Use a modern sans-serif font, a light slate/gray background, and stark white content cards with subtle drop shadows and rounded corners. 
 4. Code Structure: The output must be exactly ONE file. Inline all CSS in <style> and all JavaScript in <script>. Do not use external UI libraries like React or Bootstrap; use only Tailwind CSS via CDN or raw CSS.
 
 Case Study Specification (Content You Must Use)  
@@ -953,9 +988,9 @@ Build the interactive around the following case context and narrative:
 Course level: ${cl}  
 Learner profile: ${lp}  
 Student Role: ${role}
-Industry: ${ind}  
-Organization details: ${oo}  
-Threat mechanics: ${tm}  
+Industry: ${finalIndustry}  
+Organization details: ${constructedOrgOverview}  
+Threat mechanics: ${constructedThreat}  
 Environment summary: ${env}  
 Business Impact (Stakes): ${bi}  
 Defensive Tooling Format: ${te}
@@ -963,6 +998,8 @@ Log Density / Noise Level: ${ld}
 Difficulty: ${diff}  (Distractors/Red Herrings: ${dist})
 Richness/Depth: ${rich}
 Seat time target: ${st}  
+Instructional Scaffolding: ${scaff}
+Bloom's Objective: ${blooms}
 Final Deliverable: ${deliv}
 Grading Focus: ${rubric}
 
@@ -985,6 +1022,7 @@ Create a single‑page interactive with these major areas, using a card‑based 
 
 3. Questions card group  
    - A card labeled “Analysis Questions” that, when clicked, reveals a list of 6–8 open‑ended questions (Q1–Q8).  
+   - Questions must align with the Bloom's objective: [ ${blooms} ]. Apply this level of scaffolding/hints: [ ${scaff} ].
    - Each question should explicitly reference at least one artifact ID (e.g., “Using Technical Artifact T2…”).  
    - Under each question, add a collapsed “Instructor Notes” area that expands on click to show brief expected insights; keep this hidden by default.  
 
@@ -1015,6 +1053,18 @@ Output Format
                 }
 
                 promptOutput.value = template;
+
+                // Auto-resize textarea to fit
+                promptOutput.style.height = 'auto';
+                promptOutput.style.height = promptOutput.scrollHeight + 'px';
+
+                // Provide a brief visual pulse
+                if (outputCard) {
+                    outputCard.classList.add('ring-2', 'ring-indigo-500', 'shadow-indigo-500/20');
+                    setTimeout(() => {
+                        outputCard.classList.remove('ring-2', 'ring-indigo-500', 'shadow-indigo-500/20');
+                    }, 400);
+                }
             }
 
             const templateData = {
@@ -1036,6 +1086,8 @@ Output Format
                     businessImpact: "Catastrophic Operational Downtime",
                     toolingEnv: "Microsoft Sentinel + Defender XDR",
                     logDensity: "Realistic (Mixed with benign traffic)",
+                    scaffolding: "Guided (Questions include heavy hints and point to specific logs)",
+                    bloomsObjective: "Analyze & Correlate (Focus on connecting events)",
                     narrative: "Urgent Alert: You arrive on Monday morning to a flood of user tickets about locked screens and inaccessible files.",
                     studentRole: "Tier 1 SOC Analyst (Triage)",
                     deliverableType: "Incident Timeline / Playbook Review",
@@ -1063,7 +1115,9 @@ Output Format
                     environment: "100% Cloud-native (AWS/GCP), Identity Provider",
                     businessImpact: "Intellectual Property Theft / Competitive Loss",
                     toolingEnv: "Splunk SIEM + CrowdStrike Falcon EDR",
-                    logDensity: "Overwhelming (Massive dumps / false positives)",
+                    logDensity: "Overwhelming (Massive log dumps with false positives)",
+                    scaffolding: "Standard (Questions are open-ended but fair)",
+                    bloomsObjective: "Analyze & Correlate (Focus on connecting events)",
                     narrative: "Subtle Anomaly: During a routine log review, your dashboard flags unusual outbound traffic over several weeks.",
                     studentRole: "Threat Hunter (Proactive Search)",
                     deliverableType: "Root Cause Analysis (Technical details)",
@@ -1091,7 +1145,9 @@ Output Format
                     environment: "Highly segmented OT/ICS environment",
                     businessImpact: "Physical Safety / Life Safety Compromise",
                     toolingEnv: "ELK Stack + Zeek/Suricata",
-                    logDensity: "Overwhelming (Massive dumps / false positives)",
+                    logDensity: "Realistic (Mixed with benign traffic)",
+                    scaffolding: "Hostile/Time-Pressured (No hints, deliberately vague demands)",
+                    bloomsObjective: "Evaluate & Strategize (Focus on policy/response)",
                     narrative: "External Tip: A third-party security partner notifies your team of potential employee credentials for sale on the dark web.",
                     studentRole: "CISO / Director (Strategy & Comm)",
                     deliverableType: "Executive Briefing (1-pager non-technical)",
@@ -1123,12 +1179,12 @@ Output Format
                         if (industryOther) {
                             industryOther.disabled = true;
                             industryOther.value = '';
-                            industryOther.classList.add('bg-slate-100/50', 'text-slate-400');
-                            industryOther.classList.remove('bg-white', 'text-slate-800');
+                            industryOther.classList.add('bg-zinc-100/50', 'text-zinc-400');
+                            industryOther.classList.remove('bg-white', 'text-zinc-800');
                         }
                         if (industryOtherLabel) {
-                            industryOtherLabel.classList.add('text-slate-400');
-                            industryOtherLabel.classList.remove('text-slate-700');
+                            industryOtherLabel.classList.add('text-zinc-400');
+                            industryOtherLabel.classList.remove('text-zinc-700');
                         }
                         
                         updateBusinessFunctions();
@@ -1136,14 +1192,14 @@ Output Format
                         
                         const originalText = btn.textContent;
                         btn.textContent = "Loaded!";
-                        btn.classList.replace('text-indigo-700', 'text-emerald-700');
-                        btn.classList.replace('border-indigo-200', 'border-emerald-300');
+                        btn.classList.replace('text-zinc-700', 'text-emerald-700');
+                        btn.classList.replace('border-zinc-200', 'border-emerald-300');
                         btn.classList.replace('bg-white', 'bg-emerald-50');
                         
                         setTimeout(() => {
                             btn.textContent = originalText;
-                            btn.classList.replace('text-emerald-700', 'text-indigo-700');
-                            btn.classList.replace('border-emerald-300', 'border-indigo-200');
+                            btn.classList.replace('text-emerald-700', 'text-zinc-700');
+                            btn.classList.replace('border-emerald-300', 'border-zinc-200');
                             btn.classList.replace('bg-emerald-50', 'bg-white');
                         }, 1500);
 
@@ -1153,12 +1209,12 @@ Output Format
                 });
             });
 
-            // Ensure all items exist before applying event listeners
             const formInputs = [
                 courseLevel, learnerProfile, industrySelect, industryOther,
                 orgSize, orgFunctions, orgSystems, orgConstraints, 
-                threatActor, accessVector, threatScenario, frameworkAlignment, underlyingWeakness, dwellTime, environment, businessImpact, toolingEnv, logDensity, narrative,
-                studentRole, deliverableType, gradingRubric, difficulty, seatTime, richness, distractors
+                threatActor, accessVector, threatScenario, frameworkAlignment, underlyingWeakness, dwellTime, environment, businessImpact, narrative,
+                toolingEnv, logDensity, 
+                scaffolding, bloomsObjective, studentRole, deliverableType, gradingRubric, difficulty, seatTime, richness, distractors
             ];
 
             formInputs.forEach(input => {
@@ -1234,20 +1290,20 @@ Output Format
                     
                     if (industryOther) {
                         industryOther.disabled = true;
-                        industryOther.classList.add('bg-slate-100/50', 'text-slate-400');
-                        industryOther.classList.remove('bg-white', 'text-slate-800');
+                        industryOther.classList.add('bg-zinc-100/50', 'text-zinc-400');
+                        industryOther.classList.remove('bg-white', 'text-zinc-800');
                     }
                     if (industryOtherLabel) {
-                        industryOtherLabel.classList.add('text-slate-400');
-                        industryOtherLabel.classList.remove('text-slate-700');
+                        industryOtherLabel.classList.add('text-zinc-400');
+                        industryOtherLabel.classList.remove('text-zinc-700');
                     }
                     
                     currentLLM = 'chatgpt';
                     llmBtns.forEach(b => {
                         if(b.dataset.llm === 'chatgpt') {
-                            b.className = 'llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-indigo-600 bg-indigo-600 text-white font-semibold text-sm shadow-sm transition-all duration-200';
+                            b.className = 'llm-btn flex items-center justify-center py-3 rounded-xl border-2 border-indigo-600 bg-indigo-600 text-white font-semibold text-sm shadow-md transition-all';
                         } else {
-                            b.className = 'llm-btn flex items-center justify-center py-2.5 px-3 rounded-xl border-2 border-slate-200 bg-white text-slate-600 font-semibold text-sm hover:border-indigo-300 hover:text-indigo-600 transition-all duration-200';
+                            b.className = 'llm-btn flex items-center justify-center py-3 rounded-xl border-2 border-zinc-200 bg-white text-zinc-600 font-semibold text-sm hover:border-indigo-400 transition-all';
                         }
                     });
 
