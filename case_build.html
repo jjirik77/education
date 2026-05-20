@@ -279,7 +279,7 @@
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 gap-5 border-t border-slate-100 pt-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-slate-100 pt-5">
                                 <div>
                                     <label for="environment" class="block text-sm font-semibold text-slate-700 mb-1.5">Environment Base Summary</label>
                                     <select id="environment" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
@@ -287,6 +287,16 @@
                                         <option value="100% Cloud-native (AWS/GCP), Identity Provider">100% Cloud-native, SSO Provider</option>
                                         <option value="Highly segmented OT/ICS environment">Highly segmented OT/ICS environment</option>
                                         <option value="BYOD heavy, minimal perimeter">BYOD heavy, minimal perimeter</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="businessImpact" class="block text-sm font-semibold text-slate-700 mb-1.5">Business Impact (The "So What?")</label>
+                                    <select id="businessImpact" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                        <option value="Catastrophic Operational Downtime">Catastrophic Operational Downtime</option>
+                                        <option value="Regulatory Fine & Compliance Breach (GDPR/HIPAA)">Regulatory Fine (GDPR/HIPAA/SEC)</option>
+                                        <option value="Intellectual Property Theft / Competitive Loss">Intellectual Property Theft</option>
+                                        <option value="Reputational Damage & Loss of Customer Trust">Reputational Damage & Trust Loss</option>
+                                        <option value="Physical Safety / Life Safety Compromise">Physical Safety / Life Safety</option>
                                     </select>
                                 </div>
                             </div>
@@ -313,15 +323,26 @@
                                 <p class="text-sm text-slate-500 mb-4">Select the specific artifacts the AI should generate as evidence in the interactive tool. Ensure your selections align with the Initial Access Vector chosen.</p>
                                 
                                 <!-- Tooling Environment -->
-                                <div class="mb-5 p-4 bg-slate-50 border border-slate-200 rounded-xl">
-                                    <label for="toolingEnv" class="block text-sm font-semibold text-slate-700 mb-1.5">Defensive Tooling Environment</label>
-                                    <p class="text-xs text-slate-500 mb-2">Forces the AI to format technical logs to match specific vendor outputs.</p>
-                                    <select id="toolingEnv" class="w-full sm:w-1/2 border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
-                                        <option value="Vendor Neutral / Generic Log Formats">Vendor Neutral / Generic Logs</option>
-                                        <option value="Splunk SIEM + CrowdStrike Falcon EDR">Splunk + CrowdStrike</option>
-                                        <option value="Microsoft Sentinel + Defender XDR">Microsoft Sentinel + Defender</option>
-                                        <option value="ELK Stack + Zeek/Suricata">ELK Stack + Zeek</option>
-                                    </select>
+                                <div class="mb-5 p-4 bg-slate-50 border border-slate-200 rounded-xl grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                    <div>
+                                        <label for="toolingEnv" class="block text-sm font-semibold text-slate-700 mb-1.5">Defensive Tooling Environment</label>
+                                        <p class="text-xs text-slate-500 mb-2">Forces the AI to format technical logs to match specific vendor outputs.</p>
+                                        <select id="toolingEnv" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                            <option value="Vendor Neutral / Generic Log Formats">Vendor Neutral / Generic Logs</option>
+                                            <option value="Splunk SIEM + CrowdStrike Falcon EDR">Splunk + CrowdStrike</option>
+                                            <option value="Microsoft Sentinel + Defender XDR">Microsoft Sentinel + Defender</option>
+                                            <option value="ELK Stack + Zeek/Suricata">ELK Stack + Zeek</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="logDensity" class="block text-sm font-semibold text-slate-700 mb-1.5">Log Density / Noise Level</label>
+                                        <p class="text-xs text-slate-500 mb-2">Controls the ratio of malicious indicators to benign traffic.</p>
+                                        <select id="logDensity" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 sm:text-sm cursor-pointer">
+                                            <option value="Sterile (Only relevant events)">Sterile (Only relevant events)</option>
+                                            <option value="Realistic (Mixed with benign traffic)" selected>Realistic (Mixed with benign traffic)</option>
+                                            <option value="Overwhelming (Massive log dumps with false positives)">Overwhelming (Massive dumps / false positives)</option>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <!-- Network & Infrastructure -->
@@ -492,27 +513,8 @@
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-slate-100 pt-5">
-                                <div>
-                                    <label for="bloomsTaxonomy" class="block text-sm font-semibold text-slate-700 mb-1.5">Learning Objective (Bloom's)</label>
-                                    <select id="bloomsTaxonomy" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none sm:text-sm cursor-pointer">
-                                        <option value="Identify & Classify (Focus on finding IOCs)">Identify & Classify (Find IOCs)</option>
-                                        <option value="Analyze & Correlate (Focus on connecting disparate events)" selected>Analyze & Correlate (Connect Events)</option>
-                                        <option value="Evaluate & Strategize (Focus on policy and response decisions)">Evaluate & Strategize (Policy/Response)</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="instructionalScaffolding" class="block text-sm font-semibold text-slate-700 mb-1.5">Instructional Scaffolding</label>
-                                    <select id="instructionalScaffolding" class="w-full border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none sm:text-sm cursor-pointer">
-                                        <option value="Guided (Questions include hints and point to specific logs)">Guided (Hints & direct log pointers)</option>
-                                        <option value="Standard (Questions are open-ended but fair)" selected>Standard (Open-ended but fair)</option>
-                                        <option value="Hostile/Time-Pressured (No hints, deliberately vague executive demands)">Hostile/Time-Pressured (No hints)</option>
-                                    </select>
-                                </div>
-                            </div>
                             
-                            <div class="mt-2 border-t border-slate-100 pt-5">
+                            <div class="mt-2">
                                 <label for="seatTime" class="block text-sm font-semibold text-slate-700 mb-1.5">Seat time</label>
                                 <select id="seatTime" class="w-1/3 border border-slate-300 rounded-lg shadow-sm py-2 px-3 bg-slate-50 text-slate-800 focus:outline-none sm:text-sm cursor-pointer">
                                     <option value="15 minutes">15 minutes</option>
@@ -534,9 +536,9 @@
             </div>
 
             <!-- RIGHT COLUMN: Output Card -->
-            <div class="bg-[#0f172a] rounded-2xl shadow-2xl shadow-slate-900/50 border border-slate-700 p-2 xl:p-3 flex-1 w-full xl:w-7/12 flex flex-col h-[calc(100vh-8rem)] sticky top-24">
+            <div class="bg-[#0f172a] rounded-2xl shadow-2xl shadow-slate-900/50 border border-slate-700 flex-1 w-full xl:w-7/12 flex flex-col h-[calc(100vh-8rem)] sticky top-24 overflow-hidden">
                 
-                <div class="flex justify-between items-center px-4 pt-3 pb-4 border-b border-slate-700/50">
+                <div class="flex justify-between items-center px-4 pt-4 pb-4 border-b border-slate-700/50 bg-[#0f172a] z-10">
                     <div class="flex items-center gap-2">
                         <div class="w-3 h-3 rounded-full bg-rose-500"></div>
                         <div class="w-3 h-3 rounded-full bg-amber-500"></div>
@@ -552,7 +554,16 @@
                     </div>
                 </div>
                 
-                <textarea id="promptOutput" readonly class="w-full flex-1 bg-transparent border-0 py-5 px-6 text-slate-300 font-mono text-[13px] leading-relaxed resize-none focus:outline-none focus:ring-0 min-h-[500px]"></textarea>
+                <!-- NEW: Scenario Sanity Check Panel -->
+                <div class="px-5 py-3.5 border-b border-slate-700/50 bg-slate-800/40 shrink-0">
+                    <h3 class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-400"><path d="M2 12h4l3-9 5 18 3-9h5"/></svg>
+                        Scenario Sanity Check
+                    </h3>
+                    <p id="scenarioSummary" class="text-[13px] text-slate-300 leading-relaxed"></p>
+                </div>
+                
+                <textarea id="promptOutput" readonly class="w-full flex-1 bg-transparent border-0 py-5 px-6 text-slate-300 font-mono text-[13px] leading-relaxed resize-none focus:outline-none focus:ring-0"></textarea>
             </div>
             
         </div>
@@ -578,7 +589,9 @@
             const underlyingWeakness = document.getElementById('underlyingWeakness');
             const dwellTime = document.getElementById('dwellTime');
             const environment = document.getElementById('environment');
+            const businessImpact = document.getElementById('businessImpact');
             const toolingEnv = document.getElementById('toolingEnv');
+            const logDensity = document.getElementById('logDensity');
             const narrative = document.getElementById('narrative');
             
             const studentRole = document.getElementById('studentRole');
@@ -588,11 +601,10 @@
             const seatTime = document.getElementById('seatTime');
             const richness = document.getElementById('richness');
             const distractors = document.getElementById('distractors');
-            const bloomsTaxonomy = document.getElementById('bloomsTaxonomy');
-            const instructionalScaffolding = document.getElementById('instructionalScaffolding');
             
             const difficultyHelper = document.getElementById('difficultyHelper');
             const richnessHelper = document.getElementById('richnessHelper');
+            const scenarioSummary = document.getElementById('scenarioSummary');
             
             // UI Elements
             const clearBtn = document.getElementById('clearBtn');
@@ -766,8 +778,9 @@
                 const oo = constructedOrgOverview;
                 const tm = constructedThreat;
                 const env = environment ? environment.value : '';
+                const bi = businessImpact ? businessImpact.value : '';
                 const te = toolingEnv ? toolingEnv.value : '';
-                
+                const ld = logDensity ? logDensity.value : '';
                 const diff = difficulty ? difficulty.value : '';
                 const st = seatTime ? seatTime.value : '';
                 const nar = narrative ? narrative.value : '';
@@ -776,8 +789,10 @@
                 const rubric = gradingRubric ? gradingRubric.value : '';
                 const dist = distractors ? distractors.value : '';
                 const rich = richness ? richness.value : '';
-                const bloom = bloomsTaxonomy ? bloomsTaxonomy.value : '';
-                const scaffold = instructionalScaffolding ? instructionalScaffolding.value : '';
+
+                if (scenarioSummary) {
+                    scenarioSummary.innerHTML = `You are generating an <span class="text-indigo-300 font-medium">${diff}</span> scenario for <span class="text-indigo-300 font-medium">${cl}</span> learners. The student will act as a <span class="text-indigo-300 font-medium">${role}</span> responding to a <span class="text-indigo-300 font-medium">${ta.split('(')[0].trim()}</span> who uses <span class="text-indigo-300 font-medium">${av.split('(')[0].trim().toLowerCase()}</span> to <span class="text-indigo-300 font-medium">${ts.toLowerCase()}</span>. The interactive concludes with a <span class="text-indigo-300 font-medium">${deliv.split('(')[0].trim()}</span>.`;
+                }
 
                 let template = '';
 
@@ -786,15 +801,15 @@
                     template = `You are an expert front‑end developer and cybersecurity instructional designer.
 
 <goal>
-Recreate the same general look, layout, and interaction pattern as my existing "AI Workforce" interactive at https://sands-mvcc.github.io/AI/workforce.html, but instead of AI workforce content, build a cybersecurity case study interactive for students. Do not attempt to fetch or reference that URL. Instead, approximate its behavior from the description below.
+Build a self-contained, single-page web interactive using a modern "Dashboard" or "Master-Detail" UI pattern. The application must simulate a digital forensics/incident response workspace for students.
 </goal>
 
-<design_specifications>
-- Card‑based layout with a simple top title area.
-- A main content area with multiple cards students can click.
-- Clicking a card reveals more detailed content on the same page (no navigation to other pages).
-- Clean, neutral styling with responsive behavior so it looks good on desktop and mobile.
-</design_specifications>
+<architecture_and_ui_rules>
+1. Layout: Use a CSS Grid or Flexbox layout. The screen should feature a main navigation area (clickable cards or a sidebar) and a large central "Display Panel."
+2. State Management (No Reloads): The page must operate as a Single Page Application (SPA) using vanilla JavaScript. When a student clicks an artifact, question, or decision card, dynamically update the central Display Panel with that specific content.
+3. Aesthetic: Design a clean, premium interface. Use a modern sans-serif font (e.g., Inter or Roboto), a light slate/gray background, and stark white content cards with subtle drop shadows and rounded corners. 
+4. Code Structure: The output must be exactly ONE file. Inline all CSS in <style> and all JavaScript in <script>. Do not use external UI libraries like React or Bootstrap; use only Tailwind CSS via CDN or raw CSS.
+</architecture_and_ui_rules>
 
 <case_context>
 Course level: ${cl}
@@ -805,15 +820,15 @@ Organization details: ${oo}
 
 Threat mechanics: ${tm}
 Environment summary: ${env}
+Business Impact (Stakes): ${bi}
 Defensive Tooling Format: ${te}
+Log Density / Noise Level: ${ld}
 
 Pedagogy:
 - Difficulty: ${diff}
 - Richness/Depth: ${rich}
 - Seat time target: ${st}
 - Distractors/Red Herrings: ${dist}
-- Learning Objective (Bloom's): ${bloom}
-- Instructional Scaffolding/Hints: ${scaffold}
 - Final Deliverable: ${deliv}
 - Grading Focus: ${rubric}
 </case_context>
@@ -826,7 +841,7 @@ ${nar}
 Create a single‑page interactive with these major areas, using a card‑based layout:
 
 1. Intro / Overview card
-   - Shows course level, industry, and a short summary of the incident.
+   - Shows course level, industry, business stakes, and a short summary of the incident.
    - Includes a brief "You are a ${role}..." framing for the student.
 
 2. Artifacts card group
@@ -834,6 +849,7 @@ Create a single‑page interactive with these major areas, using a card‑based 
    - You MUST generate realistic, detailed artifacts based EXACTLY on these requested types:
      [ ${selectedArtifacts} ]
    - Format the technical logs to match the syntax and style of [ ${te} ].
+   - The log density/noise level must be: [ ${ld} ]. Ensure this is strictly followed.
    - If [ ${dist} ] includes distractors, weave those benign anomalies into the logs.
    - Each artifact card shows an ID (e.g., T1, P1) and a short label.
    - When clicked, detailed artifact content appears in a display panel area on the same page.
@@ -841,24 +857,17 @@ Create a single‑page interactive with these major areas, using a card‑based 
 3. Questions card group
    - A card labeled "Analysis Questions" that reveals a list of 6–8 open‑ended questions (Q1–Q8).
    - Each question explicitly references at least one artifact ID.
-   - Match the tone and level of hints in the questions to the [ ${scaffold} ] setting.
    - Under each question, add a collapsed "Instructor Notes" area that expands on click.
 
 4. Decision Points card group
    - A card labeled "Decisions" that reveals 2–3 decision blocks.
    - Each decision block shows a scenario, three option buttons (A/B/C), and reveals consequence text directly below when clicked.
+   - CRITICAL: Decision options must include one clearly correct action, one plausible but sub-optimal action (e.g., causes unnecessary downtime), and one detrimental action (e.g., alerts the attacker). The consequence text must explain *why* the choice was right or wrong.
 
 5. Capstone / Wrap‑up card
    - A card labeled "Capstone Assignment" that reveals the assignment description for a [ ${deliv} ] and a large <textarea> for responses.
    - Include a short, bulleted grading rubric focusing on [ ${rubric} ] below the assignment description.
 </required_sections>
-
-<interaction_and_styling>
-- Keep all behavior in vanilla JavaScript (addEventListener, classList, etc.). No page reloads.
-- Use a light background, white cards with subtle drop shadows, rounded corners.
-- Use CSS flexbox or grid for card layout. Clean sans‑serif font stack.
-- Fully responsive: card grid with multiple columns and side-by-side artifact list/detail on wide screens; stacked vertically on narrow screens.
-</interaction_and_styling>
 
 <pedagogical_constraints>
 - Match language complexity to ${cl}.
@@ -878,7 +887,7 @@ Create a single‑page interactive with these major areas, using a card‑based 
                     template = `You are an expert front‑end developer and cybersecurity instructional designer.  
 
 ## GOAL  
-Build a cybersecurity case study interactive for students. The design must approximate my existing "AI Workforce" interactive (card‑based layout, single page, clean neutral styling, responsive).
+Build a self-contained, single-page web interactive using a modern "Dashboard" or "Master-Detail" UI pattern. The application must simulate a digital forensics/incident response workspace for students.
 
 ## CASE STUDY CONTEXT
 * **Course level:** ${cl}
@@ -888,12 +897,12 @@ Build a cybersecurity case study interactive for students. The design must appro
 * **Organization details:** ${oo}
 * **Threat mechanics:** ${tm}
 * **Environment summary:** ${env}
+* **Business Impact (Stakes):** ${bi}
 * **Defensive Tooling Format:** ${te}
+* **Log Density / Noise Level:** ${ld}
 * **Difficulty:** ${diff} (Distractors: ${dist})
 * **Richness/Depth:** ${rich}
 * **Seat time target:** ${st}
-* **Learning Objective:** ${bloom}
-* **Scaffolding:** ${scaffold}
 * **Final Deliverable:** ${deliv}
 * **Grading Focus:** ${rubric}
 
@@ -904,16 +913,17 @@ ${nar}
 1. **Intro / Overview card:** Course level, industry, incident summary, and "You are a ${role}..." framing.
 2. **Artifacts card group:** Clickable cards grouped into Policies, Technical, and Business. 
    - CRITICAL: You MUST generate content for these specific requested artifacts: [ ${selectedArtifacts} ].
-   - Format logs to match [ ${te} ]. Include distractors based on the parameter above.
+   - Format logs to match [ ${te} ] and apply the specified Log Density: [ ${ld} ]. Include distractors based on the parameter above.
    - Clicking updates a detail pane on the same page. 
-3. **Questions card group:** 6-8 open-ended questions referencing artifacts. Include collapsed "Instructor Notes" under each. Apply the requested ${scaffold} constraints.
-4. **Decision Points card group:** 2-3 decision blocks with A/B/C options revealing consequence text without page reload.
+3. **Questions card group:** 6-8 open-ended questions referencing artifacts. Include collapsed "Instructor Notes" under each.
+4. **Decision Points card group:** 2-3 decision blocks with A/B/C options revealing consequence text without page reload. Options MUST include: 1 correct, 1 plausible but sub-optimal, and 1 detrimental action. Consequence text must explain *why* it was right/wrong.
 5. **Capstone card:** Assignment description for [ ${deliv} ] and a <textarea>. Include a short bulleted grading rubric evaluating [ ${rubric} ].
 
-## TECHNICAL & STYLING RULES
-* Vanilla JS only. No framework dependencies.
-* Light background, white cards, subtle shadows, rounded corners, sans-serif font.
-* Fully responsive (flexbox/grid layout).
+## TECHNICAL & UI ARCHITECTURE RULES
+1. **Layout:** Use a CSS Grid or Flexbox layout.
+2. **State Management:** The page must operate as a Single Page Application (SPA) using vanilla JavaScript. Update central panels without reloading.
+3. **Aesthetic:** Clean, neutral styling with responsive behavior. Use a light background, white cards, subtle shadows, rounded corners, sans-serif font.
+4. **Code Structure:** The output must be exactly ONE file.
 
 ## PEDAGOGICAL CONSTRAINTS
 * Match complexity to ${cl}. Explain jargon.
@@ -929,13 +939,13 @@ ${nar}
                     template = `You are an expert front‑end developer and cybersecurity instructional designer.  
 
 Goal  
-Recreate the same general look, layout, and interaction pattern as my existing “AI Workforce” interactive at https://sands-mvcc.github.io/AI/workforce.html, but instead of AI workforce content, build a cybersecurity case study interactive for students.  
+Build a self-contained, single-page web interactive using a modern "Dashboard" or "Master-Detail" UI pattern. The application must simulate a digital forensics/incident response workspace for students.
 
-Do not attempt to fetch or reference that URL. Instead, approximate its behavior from this description:  
-- Card‑based layout with a simple top title area.  
-- A main content area with multiple cards students can click.  
-- Clicking a card reveals more detailed content on the same page (no navigation to other pages).  
-- Clean, neutral styling with responsive behavior so it looks good on desktop and mobile.  
+Architecture & UI/UX Rules:
+1. Layout: Use a CSS Grid or Flexbox layout. The screen should feature a main navigation area (clickable cards or a sidebar) and a large central "Display Panel."
+2. State Management (No Reloads): The page must operate as a Single Page Application (SPA) using vanilla JavaScript. When a student clicks an artifact, question, or decision card, dynamically update the central Display Panel with that specific content.
+3. Aesthetic: Design a clean, premium interface. Use a modern sans-serif font (e.g., Inter or Roboto), a light slate/gray background, and stark white content cards with subtle drop shadows and rounded corners. 
+4. Code Structure: The output must be exactly ONE file. Inline all CSS in <style> and all JavaScript in <script>. Do not use external UI libraries like React or Bootstrap; use only Tailwind CSS via CDN or raw CSS.
 
 Case Study Specification (Content You Must Use)  
 Build the interactive around the following case context and narrative:  
@@ -947,19 +957,19 @@ Industry: ${ind}
 Organization details: ${oo}  
 Threat mechanics: ${tm}  
 Environment summary: ${env}  
+Business Impact (Stakes): ${bi}  
 Defensive Tooling Format: ${te}
+Log Density / Noise Level: ${ld}
 Difficulty: ${diff}  (Distractors/Red Herrings: ${dist})
 Richness/Depth: ${rich}
-Seat time target: ${st}
-Learning Objective: ${bloom}
-Scaffolding: ${scaffold}
+Seat time target: ${st}  
 Final Deliverable: ${deliv}
 Grading Focus: ${rubric}
 
 Student‑facing narrative (show in the intro section, use this as your storyline):  
 ${nar}  
 
-Required Sections / Cards (mirror workforce tool style, but with case content)  
+Required Sections / Cards (Master-Detail approach)  
 Create a single‑page interactive with these major areas, using a card‑based layout:  
 
 1. Intro / Overview card  
@@ -969,37 +979,27 @@ Create a single‑page interactive with these major areas, using a card‑based 
 2. Artifacts card group  
    - A set of clickable cards grouped under three headings: Policies & Procedures, Technical Evidence, Business / Communication.  
    - CRITICAL REQUIREMENT: You must generate content for exactly these requested artifacts: [ ${selectedArtifacts} ].
-   - Format the technical artifacts to look like outputs from [ ${te} ].
+   - Format the technical artifacts to look like outputs from [ ${te} ]. Adjust the noise/signal ratio to match: [ ${ld} ].
    - Each artifact card shows an ID (P1, T2, etc.) and a short label.  
    - When a card is clicked, detailed artifact content appears in a display panel area on the same page (like a “detail” pane).  
 
 3. Questions card group  
    - A card labeled “Analysis Questions” that, when clicked, reveals a list of 6–8 open‑ended questions (Q1–Q8).  
    - Each question should explicitly reference at least one artifact ID (e.g., “Using Technical Artifact T2…”).  
-   - Apply the rules of the requested ${scaffold} to how questions are framed.
    - Under each question, add a collapsed “Instructor Notes” area that expands on click to show brief expected insights; keep this hidden by default.  
 
 4. Decision Points card group  
    - A card labeled “Decisions” that reveals 2–3 decision blocks (D1–D3).  
    - Each decision block shows:  
      - A short scenario description.  
-     - Three buttons for options A/B/C.  
-     - When a button is clicked, show the consequence text for that option directly below the decision.  
+     - Three buttons for options A/B/C. (Must include: 1 clearly correct, 1 plausible/sub-optimal, 1 detrimental).  
+     - When a button is clicked, show the consequence text for that option directly below the decision. This text MUST explain *why* the choice was right or wrong.  
 
 5. Capstone / Wrap‑up card  
    - A card labeled “Capstone Assignment” that reveals:  
      - A clear assignment description for a [ ${deliv} ] aligned to the course level.  
      - A short, bulleted grading rubric focused on [ ${rubric} ].
      - A large <textarea> for students to type or paste their response.  
-
-Interaction & Layout Requirements (match workforce tool behaviorally)  
-- Use a card grid similar to the workforce page: multiple cards visible.  
-- Keep all behavior in vanilla JavaScript (addEventListener, classList.add/remove, etc.).  
-
-Styling Requirements (approximate workforce look & feel)  
-- Use a light background, white cards with subtle drop shadows, rounded corners.  
-- Use CSS flexbox or grid for card layout.  
-- Make the layout responsive (stacking on mobile, side-by-side on wide screens).  
 
 Pedagogical Constraints  
 - Match language complexity to ${cl}.  
@@ -1033,7 +1033,9 @@ Output Format
                     threatScenario: "Lateral movement to deploy ransomware on critical servers",
                     frameworkAlignment: "MITRE ATT&CK (Enterprise)",
                     environment: "Hybrid AD, M365, on-prem file servers",
+                    businessImpact: "Catastrophic Operational Downtime",
                     toolingEnv: "Microsoft Sentinel + Defender XDR",
+                    logDensity: "Realistic (Mixed with benign traffic)",
                     narrative: "Urgent Alert: You arrive on Monday morning to a flood of user tickets about locked screens and inaccessible files.",
                     studentRole: "Tier 1 SOC Analyst (Triage)",
                     deliverableType: "Incident Timeline / Playbook Review",
@@ -1042,8 +1044,6 @@ Output Format
                     seatTime: "60 minutes",
                     richness: "Standard",
                     distractors: "Low (1-2 unrelated routine alerts)",
-                    bloomsTaxonomy: "Identify & Classify (Focus on finding IOCs)",
-                    instructionalScaffolding: "Guided (Questions include hints and point to specific logs)",
                     artifacts: ["PCAP Summaries", "Firewall Logs", "Windows Event Logs (4624, 4688)", "EDR Console Alerts", "Phishing Email Original Headers", "Internal Teams/Slack Chats"]
                 },
                 insider: {
@@ -1061,7 +1061,9 @@ Output Format
                     threatScenario: "Silent exfiltration of sensitive database records",
                     frameworkAlignment: "MITRE ATT&CK (Enterprise)",
                     environment: "100% Cloud-native (AWS/GCP), Identity Provider",
+                    businessImpact: "Intellectual Property Theft / Competitive Loss",
                     toolingEnv: "Splunk SIEM + CrowdStrike Falcon EDR",
+                    logDensity: "Overwhelming (Massive dumps / false positives)",
                     narrative: "Subtle Anomaly: During a routine log review, your dashboard flags unusual outbound traffic over several weeks.",
                     studentRole: "Threat Hunter (Proactive Search)",
                     deliverableType: "Root Cause Analysis (Technical details)",
@@ -1070,8 +1072,6 @@ Output Format
                     seatTime: "90 minutes",
                     richness: "Deep‑dive",
                     distractors: "High (Simultaneous benign IT outage masking attack)",
-                    bloomsTaxonomy: "Analyze & Correlate (Focus on connecting disparate events)",
-                    instructionalScaffolding: "Standard (Questions are open-ended but fair)",
                     artifacts: ["Proxy/DNS Logs", "Sysmon Process Trees", "Cloud Platform Logs", "Identity/SSO Logs", "Internal Teams/Slack Chats", "User Interview Transcripts"]
                 },
                 supplychain: {
@@ -1089,7 +1089,9 @@ Output Format
                     threatScenario: "Sabotage and deletion of primary and backup systems",
                     frameworkAlignment: "MITRE ATT&CK (ICS)",
                     environment: "Highly segmented OT/ICS environment",
+                    businessImpact: "Physical Safety / Life Safety Compromise",
                     toolingEnv: "ELK Stack + Zeek/Suricata",
+                    logDensity: "Overwhelming (Massive dumps / false positives)",
                     narrative: "External Tip: A third-party security partner notifies your team of potential employee credentials for sale on the dark web.",
                     studentRole: "CISO / Director (Strategy & Comm)",
                     deliverableType: "Executive Briefing (1-pager non-technical)",
@@ -1098,8 +1100,6 @@ Output Format
                     seatTime: "2 hours",
                     richness: "Deep‑dive",
                     distractors: "Low (1-2 unrelated routine alerts)",
-                    bloomsTaxonomy: "Evaluate & Strategize (Focus on policy and response decisions)",
-                    instructionalScaffolding: "Hostile/Time-Pressured (No hints, deliberately vague executive demands)",
                     artifacts: ["Firewall Logs", "Memory Dump Analysis", "Web Server Access Logs", "Threat Intel / OSINT Reports", "Internal Teams/Slack Chats"]
                 }
             };
@@ -1157,8 +1157,8 @@ Output Format
             const formInputs = [
                 courseLevel, learnerProfile, industrySelect, industryOther,
                 orgSize, orgFunctions, orgSystems, orgConstraints, 
-                threatActor, accessVector, threatScenario, frameworkAlignment, underlyingWeakness, dwellTime, environment, toolingEnv, narrative,
-                studentRole, deliverableType, gradingRubric, difficulty, seatTime, richness, distractors, bloomsTaxonomy, instructionalScaffolding
+                threatActor, accessVector, threatScenario, frameworkAlignment, underlyingWeakness, dwellTime, environment, businessImpact, toolingEnv, logDensity, narrative,
+                studentRole, deliverableType, gradingRubric, difficulty, seatTime, richness, distractors
             ];
 
             formInputs.forEach(input => {
